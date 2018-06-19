@@ -1,7 +1,6 @@
 <template lang="pug">
 #app
-  img(src='./assets/logo.png')
-  router-view(v-cloak)
+  router-view(v-cloak, v-if="!isLoading")
   loader(v-if="isLoading")
 </template>
 

@@ -1,68 +1,191 @@
-<template lang="pug">
+<template lang='pug'>
   .loader
-    fingerprint-spinner(:animation-duration="1500" :size="64" color="#ff1d5e")
+    .loader-wrapper
+      p.loader-text--model I.Aivazovsky
+      .loader-text-outter
+        p.loader-text.loader-text--sizing I.Aivazovsky
+        .loader-text-inner
+          p.loader-text.loader-text--mask I.Aivazovsky
+    p.loader-message Best viewed on Desktop
 </template>
 
 <script>
-import { FingerprintSpinner } from 'epic-spinners'
 import ImagePreloader from 'image-preloader'
+import {TweenLite, TimelineMax, TweenMax, Expo} from 'gsap'
+// import TweenLite from 'gsap'
 
 export default {
   name: 'Loader',
   components: {
-    FingerprintSpinner
+  },
+  methods: {
+    preloadImages: function () {
+      const preloader = new ImagePreloader()
+      let loaded = 0
+      preloader.onProgress = () => {
+        var e = Math.abs(++loaded % 200) - 50
+        var i = -(Math.abs(loaded % 200) - 50)
+        if (Object.is(i, -0)) {
+          i = 0
+        }
+        TweenLite.to(this.$el.querySelector('.loader-text-outter'), 1, {
+          x: e
+        })
+        TweenLite.to(this.$el.querySelector('.loader-text-inner'), 1, {
+          x: i
+        })
+      }
+      preloader.preload(this.images)
+        .then((status) => {
+          let e = this
+          TweenMax.delayedCall(1, function () {
+            var i = new TimelineMax({
+              paused: false,
+              onComplete: function () {
+                e.isLoaded()
+              }
+            })
+            i.to(e.$el.querySelector('.loader-wrapper'), 1, {
+              autoAlpha: 0,
+              force3D: false,
+              ease: Expo.easeOut
+            })
+          })
+        })
+    },
+    isLoaded: function () {
+      this.$store.commit('PRELOADED')
+    }
   },
   data () {
     return {
       images: [
-        'https://d1rnu9exaqm00k.cloudfront.net/sprite.png',
-        'https://d1rnu9exaqm00k.cloudfront.net/site-menu-0.jpg',
-        'https://d1rnu9exaqm00k.cloudfront.net/site-menu-1.jpg',
-        'https://d1rnu9exaqm00k.cloudfront.net/site-menu-2.jpg',
-        'https://d1rnu9exaqm00k.cloudfront.net/site-menu-3.jpg',
-        'https://d1rnu9exaqm00k.cloudfront.net/site-menu-4.jpg',
-        'https://d1rnu9exaqm00k.cloudfront.net/life/childhood.jpg',
-        'https://d1rnu9exaqm00k.cloudfront.net/life/crimea-and-europe.jpg',
-        'https://d1rnu9exaqm00k.cloudfront.net/life/feodosia.jpg',
-        'https://d1rnu9exaqm00k.cloudfront.net/life/imperial-academy-of-arts.jpg',
-        'https://d1rnu9exaqm00k.cloudfront.net/life/last-years.jpg',
-        'https://d1rnu9exaqm00k.cloudfront.net/life/return-to-russia.jpg',
-        'https://d1rnu9exaqm00k.cloudfront.net/bg10.jpg',
-        'https://d1rnu9exaqm00k.cloudfront.net/archive/1839-thumbnail.jpg',
-        'https://d1rnu9exaqm00k.cloudfront.net/archive/1857-thumbnail.jpg'
+        'https://d1rnu9exaqm00k.cloudfront.net/sprite.png', 'https://d1rnu9exaqm00k.cloudfront.net/site-menu-0.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/site-menu-1.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/site-menu-2.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/site-menu-3.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/site-menu-4.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/life/childhood.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/life/crimea-and-europe.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/life/feodosia.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/life/imperial-academy-of-arts.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/life/last-years.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/life/return-to-russia.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/bg10.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1839-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1857-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1864-1865-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1864-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1868-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1870-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1874-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1890-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1890-2-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1890-3-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1890-4-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1890-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1897-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1897-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1898-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1898-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1899-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1899-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-2-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-3-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-4-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-5-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-6-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-7-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-8-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-9-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-10-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1910-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1910-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1934-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1945-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1990-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/early-20th-century-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/late-19th-century-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/late-19th-century-2-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/late-19th-century-thumbnail.jpg'
       ]
     }
   },
-  created () {
-    const preloader = new ImagePreloader()
-    let loaded = 0
-    // let total = this.images.length
-
-    preloader.onProgress = () => {
-      // console.log(parseInt(100 / total * ++loaded) + '%')
-      console.log(Math.abs(++loaded % 200) - 100)
-      console.log(-(Math.abs(++loaded % 200) - 100) < 0 ? 0 : -(Math.abs(++loaded % 200) - 100))
-    }
-    preloader.preload(this.images)
-      .then((status) => {
-        this.$store.commit('PRELOADED')
-        // this.$store.dispatch('PRELOAD_STATE')
-      })
+  mounted () {
+    this.$el.querySelector('.loader-wrapper').style.opacity = 0
+    var i = this
+    const n = new TimelineMax({
+      paused: false,
+      onComplete: function () {
+        i.preloadImages()
+      }
+    })
+    n.from(this.$el.querySelector('.loader-wrapper'), 0, {
+      autoAlpha: 0,
+      ease: Expo.easeInOut
+    }).to(this.$el.querySelector('.loader-wrapper'), 3, {
+      autoAlpha: 1,
+      ease: Expo.easeInOut
+    })
   }
 }
 </script>
 
-<style lang="scss">
+<style lang='scss'>
 .loader{
   position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0px;
-  left: 0px;
-  background-image: $background-preloader;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
   z-index: 999;
-  .fingerprint-spinner{
-    position: initial !important;
+
+  .loader-message {
+      letter-spacing: .2vw;
+      position: absolute;
+      bottom: 2vw;
+      right: 0;
+      left: 0;
+      z-index: 10;
+      text-transform: uppercase;
+      opacity: .4;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -ms-flex-align: center;
+      align-items: center;
   }
+
+  .loader-music-switch {
+      cursor: pointer
+  }
+
+  .loader-line {
+      height: 1px;
+      width: 5vw;
+      display: inline-block;
+      background-image: url(../assets/img/preloader-line.svg);
+      background-size: cover;
+      background-position: 50% 50%;
+      margin-right: .3vw;
+      opacity: .3;
+  }
+
+  .loader-wrapper {
+      // font-weight: 700;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-transform: uppercase;
+      transform: uppercase;
+      transition: opacity 1.5s cubic-bezier(.19, 1, .22, 1);
+
+      p {
+          font-size: 2.125rem;
+          font-family: msd;
+          text-transform: none;
+          letter-spacing: 0;
+          padding: 2vw 0;
+      }
+  }
+
+  .loader-text--model {
+      color: #54535c;
+      position: absolute;
+  }
+
+  .loader-text-outter {
+      position: relative;
+      overflow: hidden;
+      transform: translateX(-100%);
+  }
+
+  .loader-text-inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(100%);
+  }
+
+  .loader-text--mask {
+      color: #fff;
+  }
+
+  .loader-text--sizing {
+      visibility: hidden;
+  }
+
+}
+@media only screen and (max-width:768px) {
+    .preloader {
+        font-size: .9375rem;
+
+        .loader-message {
+            bottom: 30vw;
+        }
+
+        .loader-wrapper {
+          p {
+              font-size: 2.3rem;
+          }
+        }
+    }
 }
 </style>
