@@ -1,12 +1,13 @@
 <template lang='pug'>
   .loader
-    .loader-wrapper
-      p.loader-text--model I.Aivazovsky
-      .loader-text-outter
-        p.loader-text.loader-text--sizing I.Aivazovsky
-        .loader-text-inner
-          p.loader-text.loader-text--mask I.Aivazovsky
     p.loader-message Best viewed on Desktop
+    .preloader
+      .loader-wrapper
+        p.loader-text--model Ivan Sotelo
+        .loader-text-outter
+          p.loader-text.loader-text--sizing Ivan Sotelo
+          .loader-text-inner
+            p.loader-text.loader-text--mask Ivan Sotelo
 </template>
 
 <script>
@@ -45,7 +46,7 @@ export default {
                 e.isLoaded()
               }
             })
-            i.to(e.$el.querySelector('.loader-wrapper'), 1, {
+            i.to(e.$el.querySelector('.preloader'), 1, {
               autoAlpha: 0,
               force3D: false,
               ease: Expo.easeOut
@@ -60,12 +61,13 @@ export default {
   data () {
     return {
       images: [
+        '../assets/img/preloader-line.svg',
         'https://d1rnu9exaqm00k.cloudfront.net/sprite.png', 'https://d1rnu9exaqm00k.cloudfront.net/site-menu-0.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/site-menu-1.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/site-menu-2.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/site-menu-3.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/site-menu-4.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/life/childhood.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/life/crimea-and-europe.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/life/feodosia.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/life/imperial-academy-of-arts.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/life/last-years.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/life/return-to-russia.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/bg10.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1839-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1857-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1864-1865-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1864-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1868-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1870-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1874-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1890-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1890-2-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1890-3-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1890-4-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1890-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1897-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1897-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1898-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1898-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1899-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1899-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-2-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-3-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-4-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-5-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-6-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-7-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-8-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-9-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-10-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1910-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1910-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1934-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1945-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1990-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/early-20th-century-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/late-19th-century-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/late-19th-century-2-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/late-19th-century-thumbnail.jpg'
       ]
     }
   },
   mounted () {
-    this.$el.querySelector('.loader-wrapper').style.opacity = 0
+    this.$el.querySelector('.preloader').style.opacity = 0
     var i = this
     const n = new TimelineMax({
       paused: false,
@@ -73,10 +75,10 @@ export default {
         i.preloadImages()
       }
     })
-    n.from(this.$el.querySelector('.loader-wrapper'), 0, {
+    n.from(this.$el.querySelector('.preloader'), 0, {
       autoAlpha: 0,
       ease: Expo.easeInOut
-    }).to(this.$el.querySelector('.loader-wrapper'), 3, {
+    }).to(this.$el.querySelector('.preloader'), 3, {
       autoAlpha: 1,
       ease: Expo.easeInOut
     })
@@ -85,7 +87,7 @@ export default {
 </script>
 
 <style lang='scss'>
-.loader{
+.preloader{
   position: fixed;
   top: 0;
   right: 0;
@@ -94,6 +96,10 @@ export default {
   margin: auto;
   text-align: center;
   z-index: 999;
+
+  @media only screen and (max-width:768px) {
+    font-size: .9375rem;
+  }
 
   .loader-message {
       letter-spacing: .2vw;
@@ -110,6 +116,10 @@ export default {
       justify-content: center;
       -ms-flex-align: center;
       align-items: center;
+
+      @media only screen and (max-width:768px) {
+        bottom: 30vw;
+      }
   }
 
   .loader-music-switch {
@@ -143,6 +153,10 @@ export default {
           text-transform: none;
           letter-spacing: 0;
           padding: 2vw 0;
+
+          @media only screen and (max-width:768px) {
+            font-size: 2.3rem;
+          }
       }
   }
 
@@ -172,20 +186,5 @@ export default {
       visibility: hidden;
   }
 
-}
-@media only screen and (max-width:768px) {
-    .preloader {
-        font-size: .9375rem;
-
-        .loader-message {
-            bottom: 30vw;
-        }
-
-        .loader-wrapper {
-          p {
-              font-size: 2.3rem;
-          }
-        }
-    }
 }
 </style>
