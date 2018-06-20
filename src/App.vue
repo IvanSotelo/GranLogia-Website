@@ -15,6 +15,10 @@ export default {
     isLoading () {
       return this.$store.getters.isLoading
     }
+  },
+  beforeCreate: function () {
+    let isMobile = window.innerWidth <= 768
+    this.$store.dispatch('DEVICE_SIZE', isMobile)
   }
 }
 </script>
