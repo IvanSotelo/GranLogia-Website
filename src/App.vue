@@ -1,15 +1,18 @@
 <template lang="pug">
 #app
+  navigation
   router-view(v-cloak, v-if="!isLoading")
   loader(v-if="isLoading")
 </template>
 
 <script>
 import Loader from '@/loader/Loader'
+import Navigation from '@/components/Navigation'
 export default {
   name: 'paquime-website',
   components: {
-    Loader
+    Loader,
+    Navigation
   },
   computed: {
     isLoading () {
