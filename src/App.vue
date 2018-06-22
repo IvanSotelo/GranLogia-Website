@@ -1,5 +1,5 @@
 <template lang="pug">
-#app
+#app(v-bind:class="[isLoading ? 'is-loading' : 'is-loaded' , routeName]")
   navigation
   router-view(v-cloak, v-if="!isLoading")
   loader(v-if="isLoading")
@@ -17,6 +17,9 @@ export default {
   computed: {
     isLoading () {
       return this.$store.getters.isLoading
+    },
+    routeName () {
+      return this.$store.getters.routeName
     }
   },
   beforeCreate: function () {
@@ -85,7 +88,7 @@ export default {
   }
 
   body {
-      margin: 0
+      margin: 0;
   }
 
   article,
