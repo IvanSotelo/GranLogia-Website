@@ -4,19 +4,19 @@
       .device-content
         .nav__menu
           p.nav__menu--open Menu
-          .nav__pagination(itemprop="breadcrumb")
-            p
-              router-link(to="/") Home
-              p *
-              a.nav__pagination--crumb(href="")
-          .nav__options
-            .nav__options_effect
-              p Effect • On
-            .nav__options_sound
-              p Sound • Off
-            .nav__options_language
-              p.active EN
-              p RU
+        .nav__pagination(itemprop="breadcrumb")
+          p
+            router-link(to="/") Home
+            p *
+            a.nav__pagination--crumb(href="")
+        .nav__options
+          .nav__options_effect
+            p Effect • On
+          .nav__options_sound
+            p Sound • Off
+          .nav__options_language
+            p.active EN
+            p RU
 </template>
 
 <script>
