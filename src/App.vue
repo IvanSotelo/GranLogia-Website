@@ -1,6 +1,7 @@
 <template lang="pug">
 #app(v-bind:class="[isLoading ? 'is-loading' : 'is-loaded' , routeName]")
   navigation
+  FooterView
   router-view(v-cloak, v-if="!isLoading")
   loader(v-if="isLoading")
 </template>
@@ -8,11 +9,13 @@
 <script>
 import Loader from '@/loader/Loader'
 import Navigation from '@/components/Navigation'
+import FooterView from '@/components/FooterView'
 export default {
   name: 'paquime-website',
   components: {
     Loader,
-    Navigation
+    Navigation,
+    FooterView
   },
   computed: {
     isLoading () {
@@ -459,7 +462,13 @@ export default {
       width: 95%;
       display: block;
       margin-left: auto;
-      margin-right: auto
+      margin-right: auto;
+      @media only screen and (max-width:768px) {
+          width: 85%
+      }
+      @media only screen and (min-width:769px) and (max-width:1024px) {
+          width: 95%
+      }
   }
 
   .column {
