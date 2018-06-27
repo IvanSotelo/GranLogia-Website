@@ -1,6 +1,7 @@
 <template lang="pug">
 #app(v-bind:class="[isLoading ? 'is-loading' : 'is-loaded' , routeName]")
   navigation
+  SiteMenu
   FooterView
   router-view(v-cloak, v-if="!isLoading")
   loader(v-if="isLoading")
@@ -10,12 +11,14 @@
 import Loader from '@/loader/Loader'
 import Navigation from '@/components/Navigation'
 import FooterView from '@/components/FooterView'
+import SiteMenu from '@/components/SiteMenu'
 export default {
   name: 'paquime-website',
   components: {
     Loader,
     Navigation,
-    FooterView
+    FooterView,
+    SiteMenu
   },
   computed: {
     isLoading () {
