@@ -1,6 +1,10 @@
 <template lang="pug">
   aside.site-menu(role="list")
     p.site-menu--close._close Close
+    ._col.site-menu__item(role="listitem", v-if="isMobile")
+      router-link(to="/")
+        p.site-menu__item--title Home
+        .site-menu__item--bg
     ._col.site-menu__item(role="listitem")
       router-link(to="/works")
         p.site-menu__item--title Works
@@ -8,24 +12,37 @@
     ._col.site-menu__item(role="listitem")
       router-link(to="/works")
         p.site-menu__item--title Life
-        .site-menu__item--bg(style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-0.jpg);")
+        .site-menu__item--bg(style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-1.jpg);")
     ._col.site-menu__item(role="listitem")
       router-link(to="/works")
         p.site-menu__item--title Hola
-        .site-menu__item--bg(style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-0.jpg);")
+        .site-menu__item--bg(style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-2.jpg);")
     ._col.site-menu__item(role="listitem")
       router-link(to="/works")
         p.site-menu__item--title Awwards
-        .site-menu__item--bg(style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-0.jpg);")
-    ._col.site-menu__item(role="listitem")
+        .site-menu__item--bg(style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-3.jpg);")
+    ._col.site-menu__item(role="listitem", v-if="!isMobile")
       router-link(to="/works")
         p.site-menu__item--title Map
-        .site-menu__item--bg(style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-0.jpg);")
+        .site-menu__item--bg(style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-4.jpg);")
+    ._col.site-menu__item(role="listitem", v-if="isMobile")
+      router-link(to="/about")
+        p.site-menu__item--title About
+        .site-menu__item--bg
+    ._col.site-menu__item(role="listitem", v-if="isMobile")
+      router-link(to="/credits")
+        p.site-menu__item--title Credits
+        .site-menu__item--bg
 </template>
 
 <script>
 export default {
-  name: 'SiteMenu'
+  name: 'SiteMenu',
+  computed: {
+    isMobile () {
+      return this.$store.getters.isMobile
+    }
+  }
 }
 </script>
 
@@ -76,7 +93,6 @@ export default {
         width: 20%;
         position: absolute;
         height: 100%;
-        pointer-events: none;
         overflow: hidden;
         &:not(:last-of-type) {
             border-right: 1px solid rgba(255, 255, 255, .09);
@@ -158,7 +174,7 @@ export default {
         &:nth-of-type(6),
         &:nth-of-type(7) {
           @media only screen and (max-width:768px) {
-            left: 0
+            left: 0 !important
           }
         }
         &:nth-of-type(1) {
@@ -169,9 +185,7 @@ export default {
         &:nth-of-type(2) {
             left: 20%;
             @media only screen and (max-width:768px) {
-                .site-menu ._col:nth-of-type(2) {
-                    top: 18%
-                }
+              top: 18%
             }
         }
         &:nth-of-type(3) {
