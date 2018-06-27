@@ -4,23 +4,23 @@
     ._col.site-menu__item(role="listitem")
       router-link(to="/works")
         p.site-menu__item--title Works
-        .site-menu__item--bg(style="background-image: url(&quot;https://d1rnu9exaqm00k.cloudfront.net/site-menu-0.jpg&quot;);")
+        .site-menu__item--bg(style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-0.jpg);")
     ._col.site-menu__item(role="listitem")
       router-link(to="/works")
         p.site-menu__item--title Life
-        .site-menu__item--bg(style="background-image: url(&quot;https://d1rnu9exaqm00k.cloudfront.net/site-menu-0.jpg&quot;);")
+        .site-menu__item--bg(style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-0.jpg);")
     ._col.site-menu__item(role="listitem")
       router-link(to="/works")
         p.site-menu__item--title Hola
-        .site-menu__item--bg(style="background-image: url(&quot;https://d1rnu9exaqm00k.cloudfront.net/site-menu-0.jpg&quot;);")
+        .site-menu__item--bg(style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-0.jpg);")
     ._col.site-menu__item(role="listitem")
       router-link(to="/works")
         p.site-menu__item--title Awwards
-        .site-menu__item--bg(style="background-image: url(&quot;https://d1rnu9exaqm00k.cloudfront.net/site-menu-0.jpg&quot;);")
+        .site-menu__item--bg(style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-0.jpg);")
     ._col.site-menu__item(role="listitem")
       router-link(to="/works")
         p.site-menu__item--title Map
-        .site-menu__item--bg(style="background-image: url(&quot;https://d1rnu9exaqm00k.cloudfront.net/site-menu-0.jpg&quot;);")
+        .site-menu__item--bg(style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-0.jpg);")
 </template>
 
 <script>
@@ -86,10 +86,6 @@ export default {
         }
         &:hover{
           a {
-            display: block;
-            width: 100%;
-            text-align: center;
-            height: 100%;
             div {
                 opacity: 1;
                 transform: translate3d(-10%, 0, 0);
@@ -100,6 +96,10 @@ export default {
           }
         }
         a {
+          display: block;
+          width: 100%;
+          text-align: center;
+          height: 100%;
           p {
               position: relative;
               top: 50%;
