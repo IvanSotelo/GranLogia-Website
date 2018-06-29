@@ -3,7 +3,7 @@
     nav.nav(role="navigation")
       .device-content
         .nav__menu
-          p.nav__menu--open Menu
+          p.nav__menu--open(@click="toggleMenu") Menu
         .nav__pagination(itemprop="breadcrumb")
           p
             router-link(to="/") Home
@@ -21,7 +21,12 @@
 
 <script>
 export default {
-  name: 'Navigation'
+  name: 'Navigation',
+  methods: {
+    toggleMenu () {
+      this.$store.dispatch('TOGGLE_MENU')
+    }
+  }
 }
 </script>
 

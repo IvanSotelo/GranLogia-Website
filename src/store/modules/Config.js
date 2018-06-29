@@ -1,6 +1,7 @@
 const state = {
   isMobile: false,
-  routeName: ''
+  routeName: '',
+  menuOpen: false
 }
 
 const mutations = {
@@ -9,6 +10,9 @@ const mutations = {
   },
   ROUTE (state, routeName) {
     state.routeName = 'is-' + routeName
+  },
+  TOGGLE_MENU (state) {
+    state.menuOpen = !state.menuOpen
   }
 }
 
@@ -18,16 +22,16 @@ const actions = {
   },
   CHANGE_ROUTE ({ commit }, routeName) {
     commit('ROUTE', routeName)
+  },
+  TOGGLE_MENU ({ commit, state }) {
+    commit('TOGGLE_MENU')
   }
 }
 
 const getters = {
-  isMobile (state) {
-    return state.isMobile
-  },
-  routeName (state) {
-    return state.routeName
-  }
+  isMobile: state => state.isMobile,
+  routeName: state => state.routeName,
+  menuOpen: state => state.menuOpen
 }
 
 export default {

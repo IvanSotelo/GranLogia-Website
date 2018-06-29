@@ -1,6 +1,6 @@
 <template lang="pug">
-  aside.site-menu(role="list")
-    p.site-menu--close._close Close
+  aside.site-menu(role="list", v-bind:class="[menuOpen ? 'active' : '']")
+    p.site-menu--close._close(@click="toggleMenu()") Close
     ._col.site-menu__item(role="listitem", v-if="isMobile")
       router-link(to="/")
         p.site-menu__item--title Home
@@ -36,11 +36,66 @@
 </template>
 
 <script>
+import {TimelineMax, Expo} from 'gsap'
+
 export default {
   name: 'SiteMenu',
+  data: function () {
+    return {
+      menu_items: null
+    }
+  },
+  mounted () {
+    this.menu_items = this.$el.querySelectorAll('.site-menu__item')
+  },
+  methods: {
+    animateMenuIn: function () {
+      this.menu_items.forEach(function (t) {
+        return (t.style.pointerEvents = 'auto')
+      })
+      let t = new TimelineMax()
+      t.to(this.$el, this.isMobile ? 0.7 : 0.8, {
+        x: '0%',
+        force3D: false,
+        ease: Expo.easeInOut
+      })
+      t.to(this.$el.parentElement.querySelector('main'), this.isMobile ? 0.7 : 0.8, {
+        x: '25%',
+        force3D: false,
+        ease: Expo.easeInOut
+      }, this.isMobile ? '-=0.7' : '-=0.8')
+    },
+    animateMenuOut: function () {
+      this.menu_items.forEach(function (t) {
+        return (t.style.pointerEvents = 'none')
+      })
+      let t = new TimelineMax()
+      t.to(this.$el.parentElement.querySelector('main'), this.isMobile ? 0.7 : 0.8, {
+        x: '0%',
+        ease: Expo.easeInOut,
+        force3D: false
+      })
+      t.to(this.$el, this.isMobile ? 0.7 : 0.8, {
+        x: '-100%',
+        force3D: false,
+        ease: Expo.easeInOut
+      }, '-=0.8')
+    },
+    toggleMenu () {
+      this.$store.dispatch('TOGGLE_MENU')
+    }
+  },
   computed: {
     isMobile () {
       return this.$store.getters.isMobile
+    },
+    menuOpen () {
+      return this.$store.getters.menuOpen
+    }
+  },
+  watch: {
+    menuOpen: function (menuOpen) {
+      menuOpen ? this.animateMenuIn() : this.animateMenuOut()
     }
   }
 }
