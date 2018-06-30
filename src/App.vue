@@ -312,6 +312,34 @@ export default {
       user-select: none
   }
 
+
+  main {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      width: 100%;
+      height: 100%;
+      will-change: transform;
+      .page {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        // opacity: 0;
+        // visibility: hidden;
+        text-align: center;
+        will-change: transform
+      }
+  }
+
+
   @font-face {
       font-family: msd;
       src: url(./assets/fonts/MrsSaintDelafield-Regular.eot);
