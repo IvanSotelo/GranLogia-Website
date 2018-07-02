@@ -35,12 +35,12 @@ export default {
   mounted: function () {
     this.$store.dispatch('CHANGE_ROUTE', this.$route.name)
     this.$nextTick(() => {
-      window.addEventListener('resize', this.imageRetina);
+      window.addEventListener('resize', this.imageRetina)
       this.imageRetina()
     })
   },
   methods: {
-    imageRetina(event) {
+    imageRetina (event) {
       let t = this.$el.querySelector('.page-home__chapter-background--image')
       let ratio = t.dataset.ratio
       let i = t.parentNode
