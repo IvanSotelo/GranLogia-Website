@@ -17,14 +17,15 @@ main(role="main")
     .vertical-align
       .vertical-align__item
         span
-          p.js-slogan.page-home__slogan For the 200ᵀᴴ Anniversary
+          p.page-home__slogan For the 200ᵀᴴ Anniversary
         span
-          h1.js-title.page-home__title Ivan Aivazovsky
-        .js-cta.page-home__cta
+          h1.page-home__title Ivan Aivazovsky
+        .page-home__cta
           p Scroll to explore life
 </template>
 
 <script>
+import {TweenLite, Expo} from 'gsap'
 export default {
   name: 'Home',
   data () {
@@ -38,6 +39,8 @@ export default {
       window.addEventListener('resize', this.imageRetina)
       this.imageRetina()
     })
+    this.globalResize()
+    this.animateIn()
   },
   methods: {
     imageRetina (event) {
@@ -54,6 +57,38 @@ export default {
       t.style.height = imgHeight + 'px'
       t.style.top = (i.getBoundingClientRect().height - imgHeight) / 2 + 'px'
       this.isMobile ? t.style.left = (i.getBoundingClientRect().width - imgWidth) / 1.6 + 'px' : t.style.left = (i.getBoundingClientRect().width - imgWidth) / 2 + 'px'
+    },
+    globalResize () {
+      this.imageRetina()
+      this.$el.querySelector('.page-home__transition-main').width = window.innerWidth
+      this.$el.querySelector('.page-home__transition-main').height = window.innerHeight
+      this.$el.querySelector('.page-home__transition-temp').width = window.innerWidth
+      this.$el.querySelector('.page-home__transition-temp').height = window.innerHeight
+    },
+    animateIn () {
+      // TweenLite.to(this.$el.querySelector('nav'), 2, {
+      //   autoAlpha: 0
+      // })
+      // //
+      // TweenLite.to(this.$el.querySelector('footer'), 2, {
+      //   autoAlpha: 0
+      // })
+      TweenLite.from(this.$el.querySelector('.page-home__title'), 2, {
+        autoAlpha: 0,
+        y: '-100%',
+        ease: Expo.easeOut,
+        delay: (this.isSafari ? 4 : 2.5)
+      })
+      TweenLite.from(this.$el.querySelector('.page-home__slogan'), 2, {
+        autoAlpha: 0,
+        y: '100%',
+        ease: Expo.easeOut,
+        delay: (this.isSafari ? 4 : 2.5)
+      })
+      TweenLite.to(this.$el.querySelector('.page-home__cta'), 2, {
+        autoAlpha: 1,
+        delay: (this.isSafari ? 5 : 3.5)
+      })
     }
   },
   computed: {
