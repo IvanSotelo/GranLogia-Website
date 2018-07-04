@@ -23,6 +23,8 @@
     "image-preloader": "^1.1.1",
     "isotope-layout": "^3.0.6",
     "masonry-layout": "^4.2.1",
+    "npm": "^6.1.0",
+    "push-dir": "^0.4.1",
     "smooth-scrolling": "^2.3.9",
     "sniffer": "github:watsondg/sniffer",
     "swiper": "^4.2.2",
