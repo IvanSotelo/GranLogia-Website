@@ -62,7 +62,7 @@ export default {
     })
   },
   methods: {
-    imageRetina (event) {
+    imageRetina () {
       let t = this.$el.querySelector('.page-home__chapter-background--image')
       let ratio = t.dataset.ratio
       let i = t.parentNode
