@@ -18,6 +18,7 @@ exports.cssLoaders = function (options) {
   const cssLoader = {
     loader: 'css-loader',
     options: {
+      minimize: process.env.NODE_ENV === 'production',
       sourceMap: options.sourceMap
     }
   }
@@ -65,6 +66,13 @@ exports.cssLoaders = function (options) {
         loader: 'sass-resources-loader',
         options: {
           resources: path.resolve(__dirname, '../src/style/_variables.scss')
+        }
+      }
+    ).concat(
+      {
+        loader: 'sass-resources-loader',
+        options: {
+          resources: path.resolve(__dirname, '../src/style/_fonts.scss')
         }
       }
     ),
