@@ -10,9 +10,9 @@ module.exports = {
 
     browser
       .url(devServer)
-      .waitForElementVisible('#app', 5000)
-      .assert.elementPresent('.page-home')
-      .assert.containsText('div.page-home__title', 'Ivan Aivazovsky')
+      .waitForElementVisible('#app', 10000)
+      .assert.elementPresent('.loader')
+      .assert.containsText('.loader-text--model', 'Ivan Sotelo')
       .end()
   }
 }
