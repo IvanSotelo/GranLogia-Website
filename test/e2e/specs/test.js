@@ -12,7 +12,7 @@ module.exports = {
       .url(devServer)
       .waitForElementVisible('#app', 5000)
       .assert.elementPresent('.page-home')
-      .assert.containsText('.page-home__title', 'Ivan Aivazovsky')
+      .assert.containsText('div.page-home__title', 'Ivan Aivazovsky')
       .end()
   }
 }
