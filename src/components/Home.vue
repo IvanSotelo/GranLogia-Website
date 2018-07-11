@@ -28,6 +28,10 @@ main(role="main")
 import {TweenLite, Expo} from 'gsap'
 export default {
   name: 'Home',
+  metaInfo: {
+    title: 'Respetable Logia Simbólica Paquime 84',
+    titleTemplate: null
+  },
   data () {
     return {
       bgMainCanvas: null,

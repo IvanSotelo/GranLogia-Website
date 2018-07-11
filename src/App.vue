@@ -14,6 +14,14 @@ import FooterView from '@/components/FooterView'
 import SiteMenu from '@/components/SiteMenu'
 export default {
   name: 'paquime-website',
+  metaInfo: {
+    titleTemplate: 'Respetable Logia Simbólica Paquime 84 | %s',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1, shrink-to-fit=no' },
+      { hid: 'description', name: 'description', content: "Respetable Logia Simbólica Paquime - 84 jurisdiccionada a la Muy Respetable Gran Logia 'Cosmos' del Estado de Chihuahua." }
+    ]
+  },
   components: {
     Loader,
     Navigation,
