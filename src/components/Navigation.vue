@@ -6,17 +6,15 @@
           p.nav__menu--open(@click="toggleMenu") Menu
         .nav__pagination(itemprop="breadcrumb")
           p
-            router-link(to="/") Home
+            router-link(to="/") Inicio
             p *
             a.nav__pagination--crumb(href="")
         .nav__options
-          .nav__options_effect
-            p Effect • On
           .nav__options_sound
-            p Sound • Off
+            p Audio • NO
           .nav__options_language
-            p.active EN
-            p RU
+            p.active ES
+            p EN
 </template>
 
 <script>
@@ -119,13 +117,13 @@ export default {
               p {
                 cursor: pointer;
                 padding-left: 1vw;
-                .active {
-                    color: #978268;
-                    pointer-events: none
-                }
                 @media only screen and (max-width:768px) {
                   padding-left: 7vw
                 }
+              }
+              .active {
+                color: #978268;
+                pointer-events: none
               }
           }
       }
