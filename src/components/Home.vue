@@ -80,6 +80,7 @@ export default {
       t.style.height = imgHeight + 'px'
       t.style.top = (i.getBoundingClientRect().height - imgHeight) / 2 + 'px'
       this.isMobile ? t.style.left = (i.getBoundingClientRect().width - imgWidth) / 1.6 + 'px' : t.style.left = (i.getBoundingClientRect().width - imgWidth) / 2 + 'px'
+      this.globalResize()
     },
     canvasInit () {
       this.$el.querySelector('.page-home__transition')
@@ -97,7 +98,6 @@ export default {
       this.bgSprite = this.$el.querySelector('.page-home__transition-sprite')
     },
     globalResize () {
-      this.imageRetina()
       this.$el.querySelector('.page-home__transition-main').width = window.innerWidth
       this.$el.querySelector('.page-home__transition-main').height = window.innerHeight
       this.$el.querySelector('.page-home__transition-temp').width = window.innerWidth
