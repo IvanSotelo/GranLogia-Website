@@ -11,6 +11,6 @@ describe('Navigation.vue', () => {
     expect(vm.$el.querySelector('.nav__menu--open').textContent)
       .toEqual('Menu')
     expect(vm.$el.querySelector('.nav__options_sound').textContent)
-      .toEqual('Sound • Off')
+      .toEqual('Audio • OFF')
   })
 })

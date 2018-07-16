@@ -6,6 +6,6 @@ describe('FooterView.vue', () => {
     const Constructor = Vue.extend(FooterView)
     const vm = new Constructor().$mount()
     expect(vm.$el.querySelector('.footer__archive').textContent)
-      .toEqual('Archive')
+      .toEqual('Archivo')
   })
 })

@@ -11,7 +11,7 @@
             a.nav__pagination--crumb(href="")
         .nav__options
           .nav__options_sound
-            p Audio • NO
+            p Audio • OFF
           .nav__options_language
             p.active ES
             p EN

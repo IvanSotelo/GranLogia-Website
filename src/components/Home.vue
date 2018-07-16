@@ -104,13 +104,6 @@ export default {
       this.$el.querySelector('.page-home__transition-temp').height = window.innerHeight
     },
     animateIn () {
-      // TweenLite.to(this.$el.querySelector('nav'), 2, {
-      //   autoAlpha: 0
-      // })
-      // //
-      // TweenLite.to(this.$el.querySelector('footer'), 2, {
-      //   autoAlpha: 0
-      // })
       let t = this
       TweenLite.to(this.$el.querySelector('.page'), 1.3, {
         autoAlpha: 1,
@@ -135,6 +128,12 @@ export default {
       TweenLite.to(this.$el.querySelector('.page-home__cta'), 2, {
         autoAlpha: 1,
         delay: (this.isSafari ? 5 : 1.5)
+      })
+      TweenLite.to(this.$el.parentElement.querySelector('nav'), 2, {
+        autoAlpha: 1
+      })
+      TweenLite.to(this.$el.parentElement.querySelector('footer'), 2, {
+        autoAlpha: 1
       })
     },
     canvasTransition () {
