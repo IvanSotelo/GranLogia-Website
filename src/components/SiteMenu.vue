@@ -1,38 +1,38 @@
 <template lang="pug">
   aside.site-menu(role="list", v-bind:class="[menuOpen ? 'active' : '']")
-    p.site-menu--close._close(@click="toggleMenu()") Close
+    p.site-menu--close._close(@click="toggleMenu()") Cerrar
     ._col.site-menu__item(role="listitem", v-if="isMobile")
       router-link(to="/")
-        p.site-menu__item--title Home
-        .site-menu__item--bg
+        p.site-menu__item--title Inicio
+        .site-menu__item--bg(@click="toggleMenu()")
+    ._col.site-menu__item(role="listitem")
+      router-link(to="/history")
+        p.site-menu__item--title Historia
+        .site-menu__item--bg(@click="toggleMenu()" style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-0.jpg);")
     ._col.site-menu__item(role="listitem")
       router-link(to="/works")
-        p.site-menu__item--title Works
-        .site-menu__item--bg(style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-0.jpg);")
+        p.site-menu__item--title Masonería
+        .site-menu__item--bg(@click="toggleMenu()" style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-1.jpg);")
     ._col.site-menu__item(role="listitem")
       router-link(to="/works")
-        p.site-menu__item--title Life
-        .site-menu__item--bg(style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-1.jpg);")
+        p.site-menu__item--title Código masónico
+        .site-menu__item--bg(@click="toggleMenu()" style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-2.jpg);")
     ._col.site-menu__item(role="listitem")
       router-link(to="/works")
-        p.site-menu__item--title Hola
-        .site-menu__item--bg(style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-2.jpg);")
-    ._col.site-menu__item(role="listitem")
-      router-link(to="/works")
-        p.site-menu__item--title Awwards
-        .site-menu__item--bg(style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-3.jpg);")
+        p.site-menu__item--title Requisitos
+        .site-menu__item--bg(@click="toggleMenu()" style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-3.jpg);")
     ._col.site-menu__item(role="listitem", v-if="!isMobile")
       router-link(to="/works")
-        p.site-menu__item--title Map
-        .site-menu__item--bg(style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-4.jpg);")
+        p.site-menu__item--title Logias
+        .site-menu__item--bg(@click="toggleMenu()" style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-4.jpg);")
     ._col.site-menu__item(role="listitem", v-if="isMobile")
       router-link(to="/about")
-        p.site-menu__item--title About
-        .site-menu__item--bg
+        p.site-menu__item--title Acerca de
+        .site-menu__item--bg(@click="toggleMenu()")
     ._col.site-menu__item(role="listitem", v-if="isMobile")
       router-link(to="/credits")
-        p.site-menu__item--title Credits
-        .site-menu__item--bg
+        p.site-menu__item--title Contacto
+        .site-menu__item--bg(@click="toggleMenu()")
 </template>
 
 <script>
@@ -70,11 +70,13 @@ export default {
         return (t.style.pointerEvents = 'none')
       })
       let t = new TimelineMax()
-      t.to(this.$el.parentElement.querySelector('main'), this.isMobile ? 0.7 : 0.8, {
-        x: '0%',
-        ease: Expo.easeInOut,
-        force3D: false
-      })
+      if (this.$el.parentElement.querySelector('main') != null) {
+        t.to(this.$el.parentElement.querySelector('main'), this.isMobile ? 0.7 : 0.8, {
+          x: '0%',
+          ease: Expo.easeInOut,
+          force3D: false
+        })
+      }
       t.to(this.$el, this.isMobile ? 0.7 : 0.8, {
         x: '-100%',
         force3D: false,
