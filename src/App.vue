@@ -36,7 +36,7 @@ export default {
       return this.$store.getters.routeName
     }
   },
-  beforeCreate: function () {
+  updated: function () {
     let isMobile = window.innerWidth <= 768
     this.$store.dispatch('DEVICE_SIZE', isMobile)
   }
