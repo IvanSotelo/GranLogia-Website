@@ -3,36 +3,36 @@
     p.site-menu--close._close(@click="toggleMenu()") Cerrar
     ._col.site-menu__item(role="listitem", v-if="isMobile")
       router-link(to="/")
-        p.site-menu__item--title Inicio
-        .site-menu__item--bg(@click="toggleMenu()")
+        p.site-menu__item--title(@click="toggleMenu()") Inicio
+        .site-menu__item--bg
     ._col.site-menu__item(role="listitem")
       router-link(to="/history")
-        p.site-menu__item--title Historia
+        p.site-menu__item--title(@click="toggleMenu()") Historia
         .site-menu__item--bg(@click="toggleMenu()" style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-0.jpg);")
     ._col.site-menu__item(role="listitem")
       router-link(to="/works")
-        p.site-menu__item--title Masonería
+        p.site-menu__item--title(@click="toggleMenu()") Masonería
         .site-menu__item--bg(@click="toggleMenu()" style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-1.jpg);")
     ._col.site-menu__item(role="listitem")
       router-link(to="/works")
-        p.site-menu__item--title Código masónico
+        p.site-menu__item--title(@click="toggleMenu()") Código masónico
         .site-menu__item--bg(@click="toggleMenu()" style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-2.jpg);")
     ._col.site-menu__item(role="listitem")
       router-link(to="/works")
-        p.site-menu__item--title Requisitos
+        p.site-menu__item--title(@click="toggleMenu()") Requisitos
         .site-menu__item--bg(@click="toggleMenu()" style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-3.jpg);")
     ._col.site-menu__item(role="listitem", v-if="!isMobile")
       router-link(to="/works")
-        p.site-menu__item--title Logias
+        p.site-menu__item--title(@click="toggleMenu()") Logias
         .site-menu__item--bg(@click="toggleMenu()" style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-4.jpg);")
     ._col.site-menu__item(role="listitem", v-if="isMobile")
       router-link(to="/about")
-        p.site-menu__item--title Acerca de
-        .site-menu__item--bg(@click="toggleMenu()")
+        p.site-menu__item--title(@click="toggleMenu()") Acerca de
+        .site-menu__item--bg
     ._col.site-menu__item(role="listitem", v-if="isMobile")
       router-link(to="/credits")
-        p.site-menu__item--title Contacto
-        .site-menu__item--bg(@click="toggleMenu()")
+        p.site-menu__item--title(@click="toggleMenu()") Contacto
+        .site-menu__item--bg
 </template>
 
 <script>
