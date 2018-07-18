@@ -130,10 +130,12 @@ export default {
         delay: (this.isSafari ? 5 : 1.5)
       })
       TweenLite.to(this.$el.parentElement.querySelector('nav'), 2, {
-        autoAlpha: 1
+        autoAlpha: 1,
+        delay: 3
       })
       TweenLite.to(this.$el.parentElement.querySelector('footer'), 2, {
-        autoAlpha: 1
+        autoAlpha: 1,
+        delay: 3
       })
     },
     canvasTransition () {
