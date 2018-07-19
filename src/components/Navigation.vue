@@ -43,6 +43,18 @@ export default {
   }
 }
 
+.is-history{
+  a:not(.active),
+  p:not(.active) {
+      color: #000;
+  }
+  a{
+    &:hover {
+        color: #978268
+    }
+  }
+}
+
 .nav {
   padding: 2vw 0;
   position: relative;

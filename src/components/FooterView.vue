@@ -23,6 +23,25 @@ export default {
       opacity: 1;
   }
 }
+.is-history{
+  a:not(.active),
+  p:not(.active){
+    color: #000;
+  }
+  a{
+    &:hover{
+      color: #978268;
+    }    
+  }
+  img {
+      opacity: 0
+  }
+  @media only screen and (max-width:768px) {
+    footer {
+      display: none;
+    }
+  }
+}
 .footer {
     width: 100%;
     height: 50px;
