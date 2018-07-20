@@ -1,0 +1,9 @@
+{
+    "loader": {
+        "loader-message": [
+            { "isMobile": "Ver en Escritorio" },
+            { "loader-music-text": "Iniciando Música" },
+            { "loader-music-switch": "Desactivar Audio" }
+          ]
+    }
+}

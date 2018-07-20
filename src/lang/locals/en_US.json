@@ -1,0 +1,9 @@
+{
+    "loader": {
+        "loader-message": [
+            { "isMobile": "Best viewed on Desktop" },
+            { "loader-music-text": "Music Incoming" },
+            { "loader-music-switch": "Turn off Music now" }
+          ]
+    }
+}
