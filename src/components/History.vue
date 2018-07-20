@@ -2,7 +2,7 @@
 main(role="main")
   section#page-history.page.page-history
     .history
-      aside.history__aside(v-on:mouseover="isOpen = true" v-on:mouseleave="isOpen = false" v-bind:class="[isOpen ? 'active' : '']")
+      aside.history__aside(v-on:mouseenter="isOpen = true" v-on:mouseleave="isOpen = false" v-bind:class="[isOpen ? 'active' : '']")
         .history__aside-container
           .history__aside-filter
             p.history__aside-filter--title Capitulos
