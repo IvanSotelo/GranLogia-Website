@@ -6,13 +6,13 @@ import es from './locals/es_MX'
 Vue.use(VueI18n)
 
 export default new VueI18n({
-	locale: 'es',
-	messages: {
-		en: {
-			lang: en
-		},
-		es: {
-			lang: es
-		}
-	}
+  locale: 'es',
+  messages: {
+    en: {
+      lang: en
+    },
+    es: {
+      lang: es
+    }
+  }
 })
