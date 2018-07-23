@@ -74,8 +74,7 @@ import {TweenLite, Expo, TimelineMax} from 'gsap'
 export default {
   name: 'History',
   metaInfo: {
-    title: 'Respetable Logia Simbólica Paquime 84 - Historia',
-    titleTemplate: null
+    title: 'Historia'
   },
   data () {
     return {
