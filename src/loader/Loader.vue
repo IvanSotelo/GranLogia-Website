@@ -7,8 +7,8 @@
           p.loader-text.loader-text--sizing Ivan Sotelo
           .loader-text-inner
             p.loader-text.loader-text--mask Ivan Sotelo
-      p.loader-message(v-if="isMobile") {{ $t("loader.loader-message.isMobile") }}
-      p.loader-message(v-else="isMobile")
+      p.loader-message.mobile {{ $t("lang.loader.loader-message.isMobile") }}
+      p.loader-message.audio
         template(v-if="audio==='off'") {{ $t("lang.loader.loader-message.loader-music-text") }}
           span.loader-line
           span.loader-music-switch {{ $t("lang.loader.loader-message.loader-music-switch") }}
@@ -21,7 +21,14 @@ import {TweenLite, TimelineMax, TweenMax, Expo} from 'gsap'
 
 export default {
   name: 'Loader',
-  components: {
+  data () {
+    return {
+      images: [
+        '../assets/img/preloader-line.svg',
+        'https://d1rnu9exaqm00k.cloudfront.net/sprite.png', 'https://d1rnu9exaqm00k.cloudfront.net/site-menu-0.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/site-menu-1.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/site-menu-2.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/site-menu-3.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/site-menu-4.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/life/childhood.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/life/crimea-and-europe.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/life/feodosia.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/life/imperial-academy-of-arts.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/life/last-years.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/life/return-to-russia.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/bg10.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1839-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1857-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1864-1865-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1864-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1868-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1870-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1874-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1890-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1890-2-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1890-3-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1890-4-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1890-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1897-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1897-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1898-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1898-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1899-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1899-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-2-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-3-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-4-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-5-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-6-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-7-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-8-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-9-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-10-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1910-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1910-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1934-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1945-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1990-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/early-20th-century-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/late-19th-century-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/late-19th-century-2-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/late-19th-century-thumbnail.jpg'
+      ],
+      audio: 'off'
+    }
   },
   methods: {
     preloadImages: function () {
@@ -60,20 +67,6 @@ export default {
     },
     isLoaded: function () {
       this.$store.commit('PRELOADED')
-    }
-  },
-  computed: {
-    isMobile () {
-      return this.$store.getters.isMobile
-    }
-  },
-  data () {
-    return {
-      images: [
-        '../assets/img/preloader-line.svg',
-        'https://d1rnu9exaqm00k.cloudfront.net/sprite.png', 'https://d1rnu9exaqm00k.cloudfront.net/site-menu-0.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/site-menu-1.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/site-menu-2.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/site-menu-3.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/site-menu-4.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/life/childhood.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/life/crimea-and-europe.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/life/feodosia.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/life/imperial-academy-of-arts.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/life/last-years.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/life/return-to-russia.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/bg10.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1839-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1857-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1864-1865-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1864-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1868-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1870-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1874-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1890-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1890-2-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1890-3-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1890-4-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1890-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1897-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1897-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1898-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1898-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1899-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1899-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-2-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-3-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-4-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-5-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-6-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-7-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-8-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-9-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1900-10-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1910-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1910-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1934-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1945-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/1990-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/early-20th-century-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/late-19th-century-1-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/late-19th-century-2-thumbnail.jpg', 'https://d1rnu9exaqm00k.cloudfront.net/archive/late-19th-century-thumbnail.jpg'
-      ],
-      audio: 'off'
     }
   },
   mounted () {
@@ -130,12 +123,29 @@ export default {
       @media only screen and (max-width:768px) {
         bottom: 30vw;
       }
+      
+      
   }
 
+  .mobile {
+    display: none;
+    @media only screen and (max-width:768px) {
+      display: -ms-flexbox;
+      display: flex;
+    }
+  }
+  .audio {
+    display: -ms-flexbox;
+    display: flex;
+    @media only screen and (max-width:768px) {
+      display: none;
+    }
+  }
+  
   .loader-music-switch {
       cursor: pointer
   }
-
+  
   .loader-line {
       height: 1px;
       width: 5vw;
