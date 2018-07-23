@@ -6,7 +6,7 @@ import es from './locals/es_MX'
 Vue.use(VueI18n)
 
 export default new VueI18n({
-  locale: 'es',
+  locale: 'en',
   messages: {
     en: {
       lang: en

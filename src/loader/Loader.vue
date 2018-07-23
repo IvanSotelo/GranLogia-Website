@@ -7,11 +7,11 @@
           p.loader-text.loader-text--sizing Ivan Sotelo
           .loader-text-inner
             p.loader-text.loader-text--mask Ivan Sotelo
-      p.loader-message(v-if="isMobile") Best viewed on Desktop
+      p.loader-message(v-if="isMobile") {{ $t("loader.loader-message.isMobile") }}
       p.loader-message(v-else="isMobile")
-        template(v-if="audio==='off'") Music Incoming
+        template(v-if="audio==='off'") {{ $t("lang.loader.loader-message.loader-music-text") }}
           span.loader-line
-          span.loader-music-switch Turn off Music now
+          span.loader-music-switch {{ $t("lang.loader.loader-message.loader-music-switch") }}
 </template>
 
 <script>
