@@ -12,6 +12,7 @@ import Loader from '@/loader/Loader'
 import Navigation from '@/components/Navigation'
 import FooterView from '@/components/FooterView'
 import SiteMenu from '@/components/SiteMenu'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'paquime-website',
   metaInfo: {
@@ -29,16 +30,19 @@ export default {
     SiteMenu
   },
   computed: {
-    isLoading () {
-      return this.$store.getters.isLoading
-    },
-    routeName () {
-      return this.$store.getters.routeName
-    }
+    ...mapGetters([
+      'isLoading',
+      'routeName'
+    ])
+  },
+  methods: {
+    ...mapActions([
+      'DEVICE_SIZE'
+    ])
   },
   updated: function () {
     let isMobile = window.innerWidth <= 768
-    this.$store.dispatch('DEVICE_SIZE', isMobile)
+    this.DEVICE_SIZE(isMobile)
   }
 }
 </script>
