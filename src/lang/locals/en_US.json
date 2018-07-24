@@ -16,5 +16,9 @@
         "item-lodges": "Lodges",
         "item-about": "About us",
         "item-contact": "Contact us"
+    },
+    "navigation": {
+        "home": "Home",
+        "sound": "Sound"
     }
 }

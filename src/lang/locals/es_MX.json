@@ -16,5 +16,9 @@
         "item-lodges": "Logias",
         "item-about": "Acerca de",
         "item-contact": "Contacto"
+    },
+    "navigation": {
+        "home": "Inicio",
+        "sound": "Sonido"
     }
 }

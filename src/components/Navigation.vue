@@ -6,24 +6,25 @@
           p.nav__menu--open(@click="toggleMenu") Menu
         .nav__pagination(itemprop="breadcrumb")
           p
-            router-link(to="/") Inicio
-            p *
-            a.nav__pagination--crumb(href="")
+            router-link(to="/") {{ $t("lang.navigation.home") }}
+            a.nav__pagination--crumb(href="") &nbsp;•&nbsp;
         .nav__options
           .nav__options_sound
-            p Audio • OFF
+            p {{ $t("lang.navigation.sound") }} • OFF
           .nav__options_language
             p.active ES
             p EN
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'Navigation',
   methods: {
-    toggleMenu () {
-      this.$store.dispatch('TOGGLE_MENU')
-    }
+    ...mapActions({
+      toggleMenu: 'TOGGLE_MENU'
+    })
   }
 }
 </script>
@@ -39,7 +40,10 @@ export default {
 .is-home,
 .is-loading{
   .nav__pagination {
-    opacity: 0
+    opacity: 0;
+    a{
+      pointer-events: none;
+    }
   }
 }
 
@@ -151,15 +155,15 @@ export default {
 
           a {
               transition: all 2s cubic-bezier(.19, 1, .22, 1);
-              &:last-of-type {
-                  pointer-events: none
-              }
               &:nth-of-type(3) {
                   white-space: nowrap;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   max-width: 40vw;
                   vertical-align: bottom
+              }
+              &:last-of-type {
+                pointer-events: none;
               }
           }
 

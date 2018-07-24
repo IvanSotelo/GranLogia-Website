@@ -1,16 +1,21 @@
-import Vue from 'vue'
-import Navigation from '@/components/Navigation'
-import Router from 'vue-router'
+import { shallowMount, createLocalVue } from '@vue/test-utils'
+import Navigation from '@/components/Navigation.vue'
+import i18n from '../../../src/lang'
+import VueRouter from 'vue-router'
 
-Vue.use(Router)
+const localVue = createLocalVue()
+localVue.use(VueRouter)
+const router = new VueRouter()
 
 describe('Navigation.vue', () => {
   it('should render correct contents', () => {
-    const Constructor = Vue.extend(Navigation)
-    const vm = new Constructor().$mount()
-    expect(vm.$el.querySelector('.nav__menu--open').textContent)
-      .toEqual('Menu')
-    expect(vm.$el.querySelector('.nav__options_sound').textContent)
-      .toEqual('Audio • OFF')
+    const wrapper = shallowMount(Navigation, {
+      i18n,
+      router,
+      stubs: ['router-link', 'router-view']
+    })
+    expect(wrapper.find('.nav__menu--open').text()).toBe('Menu')
+    expect(wrapper.find('.nav__options_sound').text()).toBe('Sound • OFF')
+    expect(wrapper.find('.nav__options_language').text()).toBe('ESEN')
   })
 })
