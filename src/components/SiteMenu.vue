@@ -1,37 +1,37 @@
 <template lang="pug">
   aside.site-menu(role="list", v-bind:class="[menuOpen ? 'active' : '']")
-    p.site-menu--close._close(@click="toggleMenu()") Cerrar
+    p.site-menu--close._close(@click="toggleMenu()") {{ $t("lang.site-menu.close") }}
     ._col.site-menu__item(role="listitem", v-if="isMobile")
       router-link(to="/")
-        p.site-menu__item--title(@click="toggleMenu()") Inicio
+        p.site-menu__item--title(@click="toggleMenu()") {{ $t("lang.site-menu.item-home") }}
         .site-menu__item--bg
     ._col.site-menu__item(role="listitem")
       router-link(to="/history")
-        p.site-menu__item--title(@click="toggleMenu()") Historia
+        p.site-menu__item--title(@click="toggleMenu()") {{ $t("lang.site-menu.item-history") }}
         .site-menu__item--bg(@click="toggleMenu()" style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-0.jpg);")
     ._col.site-menu__item(role="listitem")
       router-link(to="/works")
-        p.site-menu__item--title(@click="toggleMenu()") Masonería
+        p.site-menu__item--title(@click="toggleMenu()") {{ $t("lang.site-menu.item-freemasonry") }}
         .site-menu__item--bg(@click="toggleMenu()" style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-1.jpg);")
     ._col.site-menu__item(role="listitem")
       router-link(to="/works")
-        p.site-menu__item--title(@click="toggleMenu()") Código masónico
+        p.site-menu__item--title(@click="toggleMenu()") {{ $t("lang.site-menu.item-moral-code") }}
         .site-menu__item--bg(@click="toggleMenu()" style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-2.jpg);")
     ._col.site-menu__item(role="listitem")
       router-link(to="/works")
-        p.site-menu__item--title(@click="toggleMenu()") Requisitos
+        p.site-menu__item--title(@click="toggleMenu()") {{ $t("lang.site-menu.item-becoming-freemason") }}
         .site-menu__item--bg(@click="toggleMenu()" style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-3.jpg);")
     ._col.site-menu__item(role="listitem", v-if="!isMobile")
       router-link(to="/works")
-        p.site-menu__item--title(@click="toggleMenu()") Logias
+        p.site-menu__item--title(@click="toggleMenu()") {{ $t("lang.site-menu.item-lodges") }}
         .site-menu__item--bg(@click="toggleMenu()" style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-4.jpg);")
     ._col.site-menu__item(role="listitem", v-if="isMobile")
       router-link(to="/about")
-        p.site-menu__item--title(@click="toggleMenu()") Acerca de
+        p.site-menu__item--title(@click="toggleMenu()") {{ $t("lang.site-menu.item-about") }}
         .site-menu__item--bg
     ._col.site-menu__item(role="listitem", v-if="isMobile")
       router-link(to="/credits")
-        p.site-menu__item--title(@click="toggleMenu()") Contacto
+        p.site-menu__item--title(@click="toggleMenu()") {{ $t("lang.site-menu.item-contact") }}
         .site-menu__item--bg
 </template>
 

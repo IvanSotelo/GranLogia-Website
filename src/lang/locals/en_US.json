@@ -5,5 +5,16 @@
             "loader-music-text": "Music Incoming",
             "loader-music-switch": "Turn off Music now"
           }
+    },
+    "site-menu": {
+        "close": "Close",
+        "item-home": "Home",
+        "item-history": "History",
+        "item-freemasonry": "Freemasonry",
+        "item-moral-code": "Masonic moral code",
+        "item-becoming-freemason": "Becoming a freemason",
+        "item-lodges": "Lodges",
+        "item-about": "About us",
+        "item-contact": "Contact us"
     }
 }
