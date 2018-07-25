@@ -37,6 +37,7 @@
 
 <script>
 import {TimelineMax, Expo} from 'gsap'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'SiteMenu',
@@ -49,6 +50,9 @@ export default {
     this.menu_items = this.$el.querySelectorAll('.site-menu__item')
   },
   methods: {
+    ...mapActions({
+      toggleMenu: 'TOGGLE_MENU'
+    }),
     animateMenuIn: function () {
       this.menu_items.forEach(function (t) {
         return (t.style.pointerEvents = 'auto')
@@ -82,18 +86,13 @@ export default {
         force3D: false,
         ease: Expo.easeInOut
       }, '-=0.8')
-    },
-    toggleMenu () {
-      this.$store.dispatch('TOGGLE_MENU')
     }
   },
   computed: {
-    isMobile () {
-      return this.$store.getters.isMobile
-    },
-    menuOpen () {
-      return this.$store.getters.menuOpen
-    }
+    ...mapGetters([
+      'isMobile',
+      'menuOpen'
+    ])
   },
   watch: {
     menuOpen: function (menuOpen) {
