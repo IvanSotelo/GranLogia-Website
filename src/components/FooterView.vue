@@ -4,10 +4,10 @@
         .vertical-align__item
           .device-content
             img(src="https://d1rnu9exaqm00k.cloudfront.net/200thAnniv.svg")
-            router-link.footer__archive(to="/archive") Archivo
+            router-link.footer__archive(to="/archive") {{ $t("lang.footer.archive") }}
             .footer-nav
-              router-link(to="/about") Gran Logia
-              router-link(to="/credits") Contacto
+              router-link(to="/about") {{ $t("lang.footer.about") }}
+              router-link(to="/contact") {{ $t("lang.footer.contact") }}
 </template>
 
 <script>

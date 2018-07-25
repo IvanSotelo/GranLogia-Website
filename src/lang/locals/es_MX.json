@@ -20,5 +20,10 @@
     "navigation": {
         "home": "Inicio",
         "sound": "Sonido"
+    },
+    "footer": {
+        "archive": "Archivo",
+        "about": "Gran Logia",
+        "contact": "Contacto"
     }
 }

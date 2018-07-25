@@ -20,5 +20,10 @@
     "navigation": {
         "home": "Home",
         "sound": "Sound"
+    },
+    "footer": {
+        "archive": "Archive",
+        "about": "Grand Londge",
+        "contact": "Contact"
     }
 }
