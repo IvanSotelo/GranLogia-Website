@@ -26,6 +26,8 @@ main(role="main")
 
 <script>
 import {TweenLite, Expo} from 'gsap'
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
   name: 'Home',
   metaInfo: {
@@ -59,13 +61,17 @@ export default {
     this.canvasInit()
     this.globalResize()
     this.animateIn()
-    this.$store.dispatch('CHANGE_ROUTE', this.$route.name)
+    // this.$store.dispatch('CHANGE_ROUTE', this.$route.name)
     this.$nextTick(() => {
       window.addEventListener('resize', this.imageRetina)
       this.imageRetina()
     })
+    this.changeRoute(this.$route.name)
   },
   methods: {
+    ...mapActions({
+      changeRoute: 'CHANGE_ROUTE'
+    }),
     imageRetina () {
       let t = this.$el.querySelector('.page-home__chapter-background--image')
       let ratio = t.dataset.ratio
@@ -206,9 +212,9 @@ export default {
     }
   },
   computed: {
-    isMobile () {
-      return this.$store.getters.isMobile
-    }
+    ...mapGetters([
+      'isMobile'
+    ])
   }
 }
 </script>
