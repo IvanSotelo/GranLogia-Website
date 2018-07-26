@@ -71,6 +71,8 @@ main(role="main")
 
 <script>
 import {TweenLite, Expo, TimelineMax} from 'gsap'
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
   name: 'History',
   metaInfo: {
@@ -83,9 +85,12 @@ export default {
   },
   mounted: function () {
     this.animateIn()
-    this.$store.dispatch('CHANGE_ROUTE', this.$route.name)
+    this.changeRoute(this.$route.name)
   },
   methods: {
+    ...mapActions({
+      changeRoute: 'CHANGE_ROUTE'
+    }),
     animateIn () {
       var i = this
       const a = new TimelineMax({
@@ -116,9 +121,9 @@ export default {
     }
   },
   computed: {
-    isMobile () {
-      return this.$store.getters.isMobile
-    }
+    ...mapGetters([
+      'isMobile'
+    ])
   }
 }
 </script>
