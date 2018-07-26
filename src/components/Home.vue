@@ -61,7 +61,6 @@ export default {
     this.canvasInit()
     this.globalResize()
     this.animateIn()
-    // this.$store.dispatch('CHANGE_ROUTE', this.$route.name)
     this.$nextTick(() => {
       window.addEventListener('resize', this.imageRetina)
       this.imageRetina()
@@ -71,7 +70,12 @@ export default {
   methods: {
     ...mapActions({
       changeRoute: 'CHANGE_ROUTE'
-    }),
+    })
+  },
+  computed: {
+    ...mapGetters([
+      'isMobile'
+    ]),
     imageRetina () {
       let t = this.$el.querySelector('.page-home__chapter-background--image')
       let ratio = t.dataset.ratio
@@ -210,11 +214,6 @@ export default {
         this.bgSpriteFrame++
       }
     }
-  },
-  computed: {
-    ...mapGetters([
-      'isMobile'
-    ])
   }
 }
 </script>
