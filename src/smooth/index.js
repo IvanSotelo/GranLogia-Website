@@ -1,7 +1,7 @@
 import classes from 'dom-classes'
 import create from 'dom-create-element'
 import prefix from 'prefix'
-import vs from 'virtual-scroll'
+import VS from 'virtual-scroll'
 import event from 'dom-events'
 
 export default class Smooth {
@@ -37,7 +37,7 @@ export default class Smooth {
       ticking: false
     }
 
-    this.vs = this.vars.native ? null : new vs({
+    this.vs = this.vars.native ? null : new VS({
       limitInertia: (this.options.vs && this.options.vs.limitInertia) || false,
       mouseMultiplier: (this.options.vs && this.options.vs.mouseMultiplier) || 1,
       touchMultiplier: (this.options.vs && this.options.vs.touchMultiplier) || 1.5,
@@ -129,7 +129,7 @@ export default class Smooth {
     if (this.isRAFCanceled) return
 
     this.vars.current += (this.vars.target - this.vars.current) * this.vars.ease
-    this.vars.current < .1 && (this.vars.current = 0)
+    this.vars.current < 0.1 && (this.vars.current = 0)
 
     this.rAF = requestAnimationFrame(this.run)
 
@@ -306,7 +306,10 @@ export default class Smooth {
     this.vars.direction === 'vertical' ? classes.remove(this.dom.listener, 'y-scroll') : classes.remove(this.dom.listener, 'x-scroll')
     this.vars.current = 0
 
-    this.vs && (this.vs.destroy(), this.vs = null)
+    if (this.vs) {
+      this.vs.destroy()
+      this.vs = null
+    }
 
     this.removeEvents()
   }
