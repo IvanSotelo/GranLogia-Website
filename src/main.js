@@ -14,8 +14,7 @@ new Vue({
   router,
   store,
   i18n,
-  components: { App },
-  template: '<App/>'
-})
+  render: h => h(App)
+}).$mount('#app')
 
 console.log('%c Created By Ivan Sotelo %c 1.0.0 ', 'background: #35495e; color: #fff', 'background: #60b883; color: #fff')
