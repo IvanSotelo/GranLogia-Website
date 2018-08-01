@@ -14,7 +14,11 @@ new Vue({
   router,
   store,
   i18n,
-  render: h => h(App)
-}).$mount('#app')
+  render: h => h(App),
+  mounted () {
+  // You'll need this for renderAfterDocumentEvent.
+    document.dispatchEvent(new Event('render-event'))
+  }
+})
 
 console.log('%c Created By Ivan Sotelo %c 1.0.0 ', 'background: #35495e; color: #fff', 'background: #60b883; color: #fff')
