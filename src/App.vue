@@ -14,7 +14,7 @@ import FooterView from '@/components/FooterView'
 import SiteMenu from '@/components/SiteMenu'
 import { mapGetters, mapActions } from 'vuex'
 export default {
-  name: 'paquime-website',
+  name: 'granlogia-website',
   metaInfo: {
     titleTemplate: 'Respetable Logia Simbólica Paquime 84 | %s',
     meta: [

@@ -1,8 +1,8 @@
 {
-  "name": "paquime-website",
+  "name": "granlogia-website",
   "version": "0.0.0",
   "author": "Ivan Sotelo <isotelo@isnstudio.com>",
-  "description": "Paquime 84 website",
+  "description": "Gran Logia website",
   "license": null,
   "private": true,
   "scripts": {

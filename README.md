@@ -1,7 +1,7 @@
-# paquime-website
+# Gran Logia - website
 [![Build Status](https://travis-ci.org/IvanSotelo/Paquime-Website.svg?branch=master)](https://travis-ci.org/IvanSotelo/Paquime-Website)
 
-> Paquime 84 website
+> Gran Logia website
 
 #### Build Setup
 

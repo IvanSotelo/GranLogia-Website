@@ -9,7 +9,7 @@ Vue.use(Meta)
 
 export default new Router({
   mode: 'history',
-  base: '/Paquime-Website/',
+  base: '/GranLogia-Website/',
   routes: [
     {
       path: '/',
