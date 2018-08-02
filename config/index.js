@@ -50,7 +50,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: 'Paquime-Website',
+    assetsPublicPath: '/Paquime-Website',
 
     /**
      * Source Maps
