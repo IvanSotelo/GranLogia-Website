@@ -123,8 +123,8 @@ export default {
       @media only screen and (max-width:768px) {
         bottom: 30vw;
       }
-      
-      
+
+
   }
 
   .mobile {
@@ -141,16 +141,16 @@ export default {
       display: none;
     }
   }
-  
+
   .loader-music-switch {
       cursor: pointer
   }
-  
+
   .loader-line {
       height: 1px;
       width: 5vw;
       display: inline-block;
-      background-image: url(./assets/img/preloader-line.svg);
+      background-image: url(../assets/img/preloader-line.svg);
       background-size: cover;
       background-position: 50% 50%;
       margin-right: .3vw;

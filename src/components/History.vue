@@ -9,8 +9,8 @@ main(role="main")
             ul
               li.main-childhood(data-chapter="childhood" data-index="0")
                 p Childhood
-              li.main-childhood(data-chapter="childhood" data-index="1")
-                p Childhood
+              li.main-childhood(data-chapter="imperial-academy-of-arts" data-index="1")
+                p imperial academy of arts
         .history__aside__trigger-wrapper
           div
             p.side-childhood I
@@ -49,7 +49,22 @@ main(role="main")
                     p M.N. Vorobiev
                     p 1787 - 1855
                   img(src="https://d1rnu9exaqm00k.cloudfront.net/life/timeline/1833-2.jpg" alt="M.N. Vorobiev")
-            .history__item.margin-0
+            .history__item
+              router-link(to="/history/1831")
+                .history__item-wrapper.space
+                  .history__item-text
+                    p.history__item-text--date 1817
+                    p.history__item-text--title Born
+                    p.history__item-text--text Born on July 29th in Feodosia, from parents Constantine and Ripsime Aivazovsky
+                  img.history__item-image(alt="Konstantin G. Aivazovsky" src="https://d1rnu9exaqm00k.cloudfront.net/life/timeline/1830-1.jpg")
+            .history__item
+              .history__item-wrapper.space
+                .history__item-aside--left
+                  span
+                    p M.N. Vorobiev
+                    p 1787 - 1855
+                  img(src="https://d1rnu9exaqm00k.cloudfront.net/life/timeline/1833-2.jpg" alt="M.N. Vorobiev")
+            .history__item.imperial-academy-of-arts.margin-0
               router-link(to="/history/1831")
                 .history__item-wrapper.space
                   .history__item-text
@@ -61,6 +76,21 @@ main(role="main")
                     span
                       p M.N. Vorobiev
                       p 1787 - 1855
+            .history__item
+              router-link(to="/history/1831")
+                .history__item-wrapper.space
+                  .history__item-text
+                    p.history__item-text--date 1817
+                    p.history__item-text--title Born
+                    p.history__item-text--text Born on July 29th in Feodosia, from parents Constantine and Ripsime Aivazovsky
+                  img.history__item-image(alt="Konstantin G. Aivazovsky" src="https://d1rnu9exaqm00k.cloudfront.net/life/timeline/1830-1.jpg")
+            .history__item
+              .history__item-wrapper.space
+                .history__item-aside--left
+                  span
+                    p M.N. Vorobiev
+                    p 1787 - 1855
+                  img(src="https://d1rnu9exaqm00k.cloudfront.net/life/timeline/1833-2.jpg" alt="M.N. Vorobiev")
       .history__mobile
         ul
           li.history__mobile-chapter.active.mobile-childhood(data-index="0")
@@ -71,6 +101,7 @@ main(role="main")
 
 <script>
 import {TweenLite, Expo, TimelineMax} from 'gsap'
+import ParallaxHistory from '../smooth'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
@@ -80,16 +111,24 @@ export default {
   },
   data () {
     return {
-      isOpen: false
+      isOpen: false,
+      smooth: null,
+      chapters: [{
+        title: '.childhood'
+      }, {
+        title: '.imperial-academy-of-arts'
+      }]
     }
   },
-  mounted: function () {
+  mounted () {
     this.animateIn()
     this.changeRoute(this.$route.name)
+    this.addSmooth()
+    this.setChapterPositions()
   },
   methods: {
     ...mapActions({
-      changeRoute: 'CHANGE_ROUTE'
+      changeRoute: 'ROUTE_NAME'
     }),
     animateIn () {
       var i = this
@@ -102,13 +141,14 @@ export default {
               ease: Expo.easeInOut
             })
           }
+          i.slideToChapter()
         }
       })
       a.to(this.$el.querySelector('.page'), 1, {
         autoAlpha: 1,
         ease: Expo.easeInOut
       })
-      a.from(this.$el.querySelector('.device-content'), this.isMobile ? 1.3 : 1.2, {
+      a.from(this.$el.querySelector('.history__timeline'), this.isMobile ? 1.3 : 1.2, {
         autoAlpha: 0,
         force3D: false,
         ease: Expo.easeInOut,
@@ -118,6 +158,49 @@ export default {
         x: '-100%',
         ease: Expo.easeInOut
       })
+    },
+    addSmooth () {
+      this.smooth = new ParallaxHistory({
+        native: true,
+        vs: {
+          mouseMultiplier: 0
+        },
+        direction: 'horizontal',
+        section: this.$el.querySelector('.history__timeline-wrapper'),
+        items: this.$el.querySelectorAll('.history__item'),
+        aside: this.$el.querySelector('.history__aside__trigger-wrapper'),
+        preload: false,
+        chap: this.setChapterPositions,
+        getchap: this.getChapterPosition,
+        ease: this.isMobile ? 0.13 : 0.075
+      })
+      this.smooth.init()
+    },
+    getChapterPosition () {
+      return this.chapters
+    },
+    setChapterPositions () {
+      var t = this
+      this.chapters.map((e, i) => {
+        var n = ++i
+        if (t.chapters.length !== n) {
+          e.leftPosition = t.$el.querySelector(e.title).offsetLeft
+          e.rightPosition = t.$el.querySelector(t.chapters[n].title).offsetLeft
+          e.topPosition = t.$el.querySelector(e.title).offsetTop
+          e.bottomPosition = t.$el.querySelector(t.chapters[n].title).offsetTop
+        } else {
+          e.leftPosition = t.$el.querySelector(e.title).offsetLeft
+          e.rightPosition = t.$el.querySelector(e.title).offsetLeft + 5 * t.$el.querySelector(e.title).getBoundingClientRect().width
+          e.topPosition = t.$el.querySelector(e.title).offsetTop
+          e.bottomPosition = t.$el.querySelector(e.title).offsetTop + 5 * t.$el.querySelector(e.title).offsetHeight
+        }
+      })
+      return this.chapters
+    },
+    slideToChapter () {
+      this.setChapterPositions()
+      var i = this.isMobile ? this.chapters[1].topPosition : this.chapters[1].leftPosition
+      this.smooth.scrollTo(i)
     }
   },
   computed: {

@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      changeRoute: 'CHANGE_ROUTE'
+      changeRoute: 'ROUTE_NAME'
     }),
     imageRetina () {
       let t = this.$el.querySelector('.page-home__chapter-background--image')

@@ -1,11 +1,7 @@
-import { detect } from 'detect-browser'
-const browser = detect()
-
 const state = {
   isMobile: false,
   routeName: '',
-  menuOpen: false,
-  browserName: browser.name
+  menuOpen: false
 }
 
 const mutations = {
@@ -24,7 +20,7 @@ const actions = {
   DEVICE_SIZE ({ commit }, mobile) {
     commit('DEVICE', mobile)
   },
-  CHANGE_ROUTE ({ commit }, routeName) {
+  ROUTE_NAME ({ commit }, routeName) {
     commit('ROUTE', routeName)
   },
   TOGGLE_MENU ({ commit, state }) {

@@ -1517,4 +1517,19 @@ export default {
           opacity: 0
       }
   }
+  .vs-scrollbar {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 100%
+  }
+
+  .vs-scrollbar .vs-scrolldrag {
+      position: absolute;
+      width: 100%;
+      height: auto;
+      background: #fff;
+      transition: background .6s cubic-bezier(.19, 1, .22, 1)
+  }
 </style>
