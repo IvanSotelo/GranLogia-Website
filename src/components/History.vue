@@ -7,10 +7,8 @@ main(role="main")
           .history__aside-filter
             p.history__aside-filter--title Capitulos
             ul
-              li.main-childhood(data-chapter="childhood" data-index="0")
-                p Childhood
-              li.main-childhood(data-chapter="imperial-academy-of-arts" data-index="1")
-                p imperial academy of arts
+              li(v-for="(chap, i) in chapters" :key="i" :class="'main-' + chap.title" @click="slideToChapter(i)")
+                p {{ chap.text }}
         .history__aside__trigger-wrapper
           div
             p.side-childhood I
@@ -84,7 +82,7 @@ main(role="main")
                     p.history__item-text--title Born
                     p.history__item-text--text Born on July 29th in Feodosia, from parents Constantine and Ripsime Aivazovsky
                   img.history__item-image(alt="Konstantin G. Aivazovsky" src="https://d1rnu9exaqm00k.cloudfront.net/life/timeline/1830-1.jpg")
-            .history__item
+            .history__item.margin-0
               .history__item-wrapper.space
                 .history__item-aside--left
                   span
@@ -93,15 +91,13 @@ main(role="main")
                   img(src="https://d1rnu9exaqm00k.cloudfront.net/life/timeline/1833-2.jpg" alt="M.N. Vorobiev")
       .history__mobile
         ul
-          li.history__mobile-chapter.active.mobile-childhood(data-index="0")
-            p I
-          li.history__mobile-chapter.mobile-imperial-academy-of-arts(data-index="1")
-            p II
+          li.history__mobile-chapter(v-for="(chap, i) in chapters" :key="i" :class="'mobile-' + chap.title" @click="slideToChapter(i)")
+            p {{ chap.text }}
 </template>
 
 <script>
 import {TweenLite, Expo, TimelineMax} from 'gsap'
-import ParallaxHistory from '../smooth'
+import ParallaxHistory from '../smooth/history'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
@@ -114,9 +110,11 @@ export default {
       isOpen: false,
       smooth: null,
       chapters: [{
-        title: '.childhood'
+        title: 'childhood',
+        text: 'Childhood'
       }, {
-        title: '.imperial-academy-of-arts'
+        title: 'imperial-academy-of-arts',
+        text: 'Imperial academy of arts'
       }]
     }
   },
@@ -141,7 +139,7 @@ export default {
               ease: Expo.easeInOut
             })
           }
-          i.slideToChapter()
+          i.slideToChapter(0)
         }
       })
       a.to(this.$el.querySelector('.page'), 1, {
@@ -161,11 +159,10 @@ export default {
     },
     addSmooth () {
       this.smooth = new ParallaxHistory({
-        native: true,
+        native: false,
         vs: {
-          mouseMultiplier: 0
+          mouseMultiplier: 0.4
         },
-        direction: 'horizontal',
         section: this.$el.querySelector('.history__timeline-wrapper'),
         items: this.$el.querySelectorAll('.history__item'),
         aside: this.$el.querySelector('.history__aside__trigger-wrapper'),
@@ -184,22 +181,22 @@ export default {
       this.chapters.map((e, i) => {
         var n = ++i
         if (t.chapters.length !== n) {
-          e.leftPosition = t.$el.querySelector(e.title).offsetLeft
-          e.rightPosition = t.$el.querySelector(t.chapters[n].title).offsetLeft
-          e.topPosition = t.$el.querySelector(e.title).offsetTop
-          e.bottomPosition = t.$el.querySelector(t.chapters[n].title).offsetTop
+          e.leftPosition = t.$el.querySelector('.' + e.title).offsetLeft
+          e.rightPosition = t.$el.querySelector('.' + t.chapters[n].title).offsetLeft
+          e.topPosition = t.$el.querySelector('.' + e.title).offsetTop
+          e.bottomPosition = t.$el.querySelector('.' + t.chapters[n].title).offsetTop
         } else {
-          e.leftPosition = t.$el.querySelector(e.title).offsetLeft
-          e.rightPosition = t.$el.querySelector(e.title).offsetLeft + 5 * t.$el.querySelector(e.title).getBoundingClientRect().width
-          e.topPosition = t.$el.querySelector(e.title).offsetTop
-          e.bottomPosition = t.$el.querySelector(e.title).offsetTop + 5 * t.$el.querySelector(e.title).offsetHeight
+          e.leftPosition = t.$el.querySelector('.' + e.title).offsetLeft
+          e.rightPosition = t.$el.querySelector('.' + e.title).offsetLeft + 5 * t.$el.querySelector('.' + e.title).getBoundingClientRect().width
+          e.topPosition = t.$el.querySelector('.' + e.title).offsetTop
+          e.bottomPosition = t.$el.querySelector('.' + e.title).offsetTop + 5 * t.$el.querySelector('.' + e.title).offsetHeight
         }
       })
       return this.chapters
     },
-    slideToChapter () {
+    slideToChapter (t) {
       this.setChapterPositions()
-      var i = this.isMobile ? this.chapters[1].topPosition : this.chapters[1].leftPosition
+      var i = this.isMobile ? this.chapters[t].topPosition : this.chapters[t].leftPosition
       this.smooth.scrollTo(i)
     }
   },
