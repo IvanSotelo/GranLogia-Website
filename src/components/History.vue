@@ -92,7 +92,7 @@ main(role="main")
       .history__mobile
         ul
           li.history__mobile-chapter(v-for="(chap, i) in chapters" :key="i" :class="'mobile-' + chap.title" @click="slideToChapter(i)")
-            p {{ chap.text }}
+            p {{ chap.mobile }}
 </template>
 
 <script>
@@ -111,10 +111,12 @@ export default {
       smooth: null,
       chapters: [{
         title: 'childhood',
-        text: 'Childhood'
+        text: 'Childhood',
+        mobile: 'I'
       }, {
         title: 'imperial-academy-of-arts',
-        text: 'Imperial academy of arts'
+        text: 'Imperial academy of arts',
+        mobile: 'II'
       }]
     }
   },
