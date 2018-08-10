@@ -12,8 +12,8 @@
           .nav__options_sound
             p {{ $t("lang.navigation.sound") }} • OFF
           .nav__options_language
-            p.active ES
-            p EN
+            p(@click="change_lang('es')" v-bind:class="[$i18n.locale=='es' ? 'active' : '']") ES
+            p(@click="change_lang('en')" v-bind:class="[$i18n.locale=='en' ? 'active' : '']") EN
 </template>
 
 <script>
@@ -24,7 +24,10 @@ export default {
   methods: {
     ...mapActions({
       toggleMenu: 'TOGGLE_MENU'
-    })
+    }),
+    change_lang (lang) {
+      this.$i18n.locale = lang
+    }
   }
 }
 </script>
