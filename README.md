@@ -1,5 +1,5 @@
 # Gran Logia - website
-[![Build Status](https://travis-ci.org/IvanSotelo/Paquime-Website.svg?branch=master)](https://travis-ci.org/IvanSotelo/Paquime-Website)
+[![Build Status](https://travis-ci.org/IvanSotelo/GranLogia-Website.svg?branch=master)](https://travis-ci.org/IvanSotelo/GranLogia-Website)
 
 > Gran Logia website
 
