@@ -206,6 +206,9 @@ export default {
     ...mapGetters([
       'isMobile'
     ])
+  },
+  destroyed () {
+    this.smooth.destroy()
   }
 }
 </script>
