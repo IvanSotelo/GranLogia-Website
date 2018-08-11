@@ -20,7 +20,7 @@ export default {
 <style lang="scss" scoped>
 .is-loaded{
   footer {
-      opacity: 1;
+      opacity: 1
   }
 }
 .is-history{
@@ -31,7 +31,7 @@ export default {
   a{
     &:hover{
       color: #978268;
-    }    
+    }
   }
   img {
       opacity: 0

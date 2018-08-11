@@ -26,6 +26,9 @@ export default {
       toggleMenu: 'TOGGLE_MENU'
     }),
     change_lang (lang) {
+      this.$store.commit('PRELOADED')
+      this.$el.querySelector('nav').removeAttribute('style')
+      this.$el.parentElement.querySelector('footer').removeAttribute('style')
       this.$i18n.locale = lang
     }
   }

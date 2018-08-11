@@ -4,7 +4,7 @@ const state = {
 
 const mutations = {
   PRELOADED (state) {
-    state.isLoading = false
+    state.isLoading = !state.isLoading
   }
 }
 
