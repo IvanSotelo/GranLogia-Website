@@ -10,14 +10,15 @@
             a.nav__pagination--crumb(href="") &nbsp;•&nbsp;
         .nav__options
           .nav__options_sound
-            p {{ $t("lang.navigation.sound") }} • OFF
+            p(v-if="audio") {{ $t("lang.navigation.sound") }} • {{audio}}
+            p(v-else) {{ $t("lang.navigation.sound") }} • on
           .nav__options_language
             p(@click="change_lang('es')" v-bind:class="[$i18n.locale=='es' ? 'active' : '']") ES
             p(@click="change_lang('en')" v-bind:class="[$i18n.locale=='en' ? 'active' : '']") EN
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'Navigation',
@@ -31,6 +32,11 @@ export default {
       this.$el.parentElement.querySelector('footer').removeAttribute('style')
       this.$i18n.locale = lang
     }
+  },
+  computed: {
+    ...mapGetters([
+      'audio'
+    ])
   }
 }
 </script>

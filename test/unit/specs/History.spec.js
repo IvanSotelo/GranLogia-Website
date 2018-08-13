@@ -3,6 +3,7 @@ import History from '@/components/History.vue'
 import i18n from '../../../src/lang'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
+import Config from '../../../src/store/modules/Config'
 
 const localVue = createLocalVue()
 localVue.use(VueRouter)
@@ -14,25 +15,24 @@ describe('History.vue', () => {
   let actions
   let state
   let store
-  let getters
 
   beforeEach(() => {
-    getters = {
-      isMobile: () => false
-    }
-
     state = {
-      isMobile: false
+      Config: {
+        isMobile: false,
+        audio: 'on',
+        routeName: 'is-history'
+      }
     }
 
     actions = {
-      moduleActionClick: jest.fn()
+      ROUTE_NAME: jest.fn()
     }
 
     store = new Vuex.Store({
       state,
       actions,
-      getters
+      getters: Config.getters
     })
   })
 
