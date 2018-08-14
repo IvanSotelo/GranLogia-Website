@@ -10,7 +10,7 @@
         p.site-menu__item--title(@click="toggleMenu()") {{ $t("lang.site-menu.item-history") }}
         .site-menu__item--bg(@click="toggleMenu()" style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-0.jpg);")
     ._col.site-menu__item(role="listitem")
-      router-link(to="/works")
+      router-link(to="/freemasonry")
         p.site-menu__item--title(@click="toggleMenu()") {{ $t("lang.site-menu.item-freemasonry") }}
         .site-menu__item--bg(@click="toggleMenu()" style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-1.jpg);")
     ._col.site-menu__item(role="listitem")
