@@ -38,7 +38,7 @@ export default {
         this.$el.querySelector('.text'),
         {type: 'words, chars', wordsClass: 'word'}
       )
-      this.split.words.forEach((t) => {
+      !this.isMobile && this.split.words.forEach((t) => {
         return classes.add(t, 'is-hidden')
       })
     },
