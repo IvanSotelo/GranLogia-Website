@@ -1,6 +1,6 @@
 <template lang="pug">
 main(role="main")
-  transition(v-on:enter="animateIn" v-on:leave="leave" v-bind:css="false" appear)
+  transition(v-on:enter="animateIn" v-bind:css="false" appear)
     section#page-freemasonry.page.page-freemasonry
       .page-freemasonry__background
       .vertical-align
@@ -44,21 +44,17 @@ export default {
     },
     introAnimation () {
       const n = new TimelineMax({})
-      if (this.isMobile) {
-        n.to(this.$el.querySelector('.text'), 1, {
-          autoAlpha: 1,
-          delay: 1,
-          ease: Expo.easeInOut
-        })
-      } else {
-        n.staggerTo(this.split.words, 0.1, {
-          className: '-=is-hidden'
-        }, 0.1)
-      }
+      this.isMobile ? n.to(this.$el.querySelector('.text'), 1, {
+        autoAlpha: 1,
+        delay: 1,
+        ease: Expo.easeInOut
+      }) : n.staggerTo(this.split.words, 0.1, {
+        className: '-=is-hidden'
+      }, 0.1)
     },
     animateIn (el, done) {
       let t = this
-      TweenLite.to(this.$el.querySelector('.page'), 1, {
+      TweenLite.to(el, 1, {
         autoAlpha: 1,
         ease: Expo.easeOut,
         delay: 1
@@ -72,9 +68,6 @@ export default {
           done()
         }
       })
-    },
-    leave: function (el, done) {
-      console.log(el, done)
     }
   },
   computed: {
