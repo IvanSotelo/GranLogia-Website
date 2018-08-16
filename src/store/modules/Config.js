@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueLocalStorage from 'vue-localstorage'
 Vue.use(VueLocalStorage)
 const state = {
-  isMobile: false,
+  isMobile: window.innerWidth <= 768,
   routeName: '',
   menuOpen: false,
   language: Vue.localStorage.get('language', 'es'),
