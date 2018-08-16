@@ -25,6 +25,13 @@ export default {
       text: 'July 29th is the 200th anniversary of the birth of Ivan Aivazvsky. He early showed a special attraction to the sea and was the most brilliant consistent representative seascape painter throughout the XIX century. Aivazovskys creativity deep roots connected with Russian Art of the late XVIII and XIX centuries, and in turn impacted on him fruitfully. He was keenly aware of the charm of the changing sea elements and diversity, this greatly reflected his work. He studied the sea, he kenw it by heart, and with extraordinary ease, he portrayed it.'
     }
   },
+  beforeRouteLeave (to, from, next) {
+    TweenLite.to(this.$el.querySelector('.page'), 1, {
+      autoAlpha: 0,
+      ease: Expo.easeInOut,
+      onComplete: next
+    })
+  },
   mounted () {
     this.splitText()
     this.changeRoute(this.$route.name)
