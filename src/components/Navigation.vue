@@ -31,13 +31,15 @@ export default {
   methods: {
     ...mapActions({
       toggleMenu: 'TOGGLE_MENU',
-      toggleSound: 'TOGGLE_SOUND'
+      toggleSound: 'TOGGLE_SOUND',
+      toggleLanguage: 'TOGGLE_LANGUAGE'
     }),
     change_lang (lang) {
       this.$store.commit('PRELOADED')
       this.$el.querySelector('nav').removeAttribute('style')
       this.$el.parentElement.querySelector('footer').removeAttribute('style')
       this.$i18n.locale = lang
+      this.toggleLanguage()
     },
     loadAudio () {
       if (this.isMobile) return false

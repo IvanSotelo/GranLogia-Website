@@ -123,6 +123,8 @@ export default {
           display: none
         }
     }
-
+    .router-link-active{
+      color: #a1907f
+    }
 }
 </style>

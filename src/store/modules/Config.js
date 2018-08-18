@@ -2,9 +2,10 @@ import Vue from 'vue'
 import VueLocalStorage from 'vue-localstorage'
 Vue.use(VueLocalStorage)
 const state = {
-  isMobile: false,
+  isMobile: window.innerWidth <= 768,
   routeName: '',
   menuOpen: false,
+  language: Vue.localStorage.get('language', 'es'),
   audio: Vue.localStorage.get('audio')
 }
 
@@ -17,6 +18,15 @@ const mutations = {
   },
   TOGGLE_MENU (state) {
     state.menuOpen = !state.menuOpen
+  },
+  LANGUAGE (state) {
+    if (state.language === 'es') {
+      state.language = 'en'
+      Vue.localStorage.set('language', 'en')
+    } else {
+      state.language = 'es'
+      Vue.localStorage.set('language', 'es')
+    }
   },
   SOUND (state) {
     if (state.audio) {
@@ -43,6 +53,9 @@ const actions = {
   },
   TOGGLE_MENU ({ commit, state }) {
     commit('TOGGLE_MENU')
+  },
+  TOGGLE_LANGUAGE ({ commit, state }) {
+    commit('LANGUAGE')
   },
   TOGGLE_SOUND ({ commit, state }) {
     commit('SOUND')

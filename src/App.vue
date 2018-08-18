@@ -1532,4 +1532,16 @@ export default {
       background: #fff;
       transition: background .6s cubic-bezier(.19, 1, .22, 1)
   }
+
+  .vertical-align {
+      display: table;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      z-index: 50;
+      .vertical-align__item {
+          display: table-cell;
+          vertical-align: middle;
+      }
+  }
 </style>
