@@ -25,7 +25,7 @@ main(role="main")
 </template>
 
 <script>
-import {TweenLite, Expo} from 'gsap'
+import {TweenLite, Expo, TimelineMax} from 'gsap'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
@@ -214,6 +214,22 @@ export default {
     ...mapGetters([
       'isMobile'
     ])
+  },
+  beforeRouteLeave (to, from, next) {
+    let i = new TimelineMax({})
+    i.to(this.$el.querySelector('.js-second'), 0.7, {
+      y: 0,
+      ease: Expo.easeInOut
+    })
+    i.to(this.$el.querySelector('.js-first'), 0.7, {
+      y: 0,
+      ease: Expo.easeInOut
+    }, 0.3)
+    i.to(this.$el.querySelector('.page'), 0.5, {
+      autoAlpha: 0,
+      ease: Expo.easeInOut,
+      onComplete: next
+    }, '-=0.1')
   }
 }
 </script>
