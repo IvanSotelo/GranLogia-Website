@@ -11,13 +11,13 @@
       p.loader-message.audio
         template(v-if="audio==='on'") {{ $t("lang.loader.loader-message.loader-music-text") }}
           span.loader-line
-          span.loader-music-switch {{ $t("lang.loader.loader-message.loader-music-switch") }}
+          span.loader-music-switch(@click="toggleSound") {{ $t("lang.loader.loader-message.loader-music-switch") }}
 </template>
 
 <script>
 import ImagePreloader from 'image-preloader'
 import {TweenLite, TimelineMax, TweenMax, Expo} from 'gsap'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'Loader',
@@ -30,6 +30,10 @@ export default {
     }
   },
   methods: {
+    ...mapActions({
+      isLoaded: 'PRELOAD_STATE',
+      toggleSound: 'TOGGLE_SOUND'
+    }),
     preloadImages: function () {
       const preloader = new ImagePreloader()
       let loaded = 0
@@ -63,9 +67,6 @@ export default {
             })
           })
         })
-    },
-    isLoaded: function () {
-      this.$store.commit('PRELOADED')
     }
   },
   mounted () {

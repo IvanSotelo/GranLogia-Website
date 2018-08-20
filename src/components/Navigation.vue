@@ -62,18 +62,19 @@ export default {
       this.sound.pause()
     }
   },
-  mounted () {
-    this.loadAudio()
-  },
   computed: {
     ...mapGetters([
       'audio',
-      'isMobile'
+      'isMobile',
+      'isLoading'
     ])
   },
   watch: {
     audio: function (audio) {
       audio === 'on' ? this.playAudio() : this.stopAudio()
+    },
+    isLoading: function (isLoading) {
+      isLoading || this.loadAudio()
     }
   }
 }
