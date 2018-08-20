@@ -12,7 +12,7 @@ main(role="main")
 <script>
 import {TweenLite, Expo, TimelineMax} from 'gsap'
 import { mapGetters, mapActions } from 'vuex'
-// import classes from 'dom-classes'
+import Single from '../smooth/single'
 // import SplitText from '../pluggins/SplitText'
 
 export default {
@@ -22,6 +22,7 @@ export default {
   },
   data () {
     return {
+      smooth: null
     }
   },
   beforeRouteLeave (to, from, next) {
@@ -34,6 +35,7 @@ export default {
   },
   mounted () {
     this.changeRoute(this.$route.name)
+    this.addSmooth()
   },
   methods: {
     ...mapActions({
@@ -51,12 +53,23 @@ export default {
         y: 0,
         autoAlpha: 1
       }, 0.1, '-=1.0')
+    },
+    addSmooth () {
+      this.smooth = new Single({
+        native: false,
+        section: this.$el.querySelector('.js-moral-code'),
+        ease: 0.075
+      })
+      this.smooth.init()
     }
   },
   computed: {
     ...mapGetters([
       'isMobile'
     ])
+  },
+  destroyed () {
+    this.smooth.destroy()
   }
 }
 </script>
