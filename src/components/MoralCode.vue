@@ -4,9 +4,9 @@ main(role="main")
     section#page-moral-code.page.page-moral-code
       .moral-code
         ul.js-moral-code
-          li.js-moral-code-list(v-for="(n, i) in 10" :key="i")
-            p 1835
-            p Saint-Petersburg
+          li.js-moral-code-list(v-for="(n, i) in 20" :key="i")
+            p {{n}}
+            p {{ $t("lang.moral-code["+i+"]") }}
 </template>
 
 <script>
@@ -95,12 +95,14 @@ export default {
               display: inline-block;
               letter-spacing: 0;
               &:first-of-type {
+                  font-size: 1rem;
                   padding-right: 5vw;
                   font-family: "Playfair Display";
                   font-style: italic
               }
               &:last-of-type {
-                  font-family: PTSerifPro-Book
+                font-size: 0.8rem;
+                font-family: PTSerifPro-Book
               }
             }
         }
