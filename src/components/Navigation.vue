@@ -10,8 +10,8 @@
             a.nav__pagination--crumb(href="") &nbsp;•&nbsp;
         .nav__options
           .nav__options_sound
-            p(v-if="audio") {{ $t("lang.navigation.sound") }} • {{audio}}
-            p(v-else) {{ $t("lang.navigation.sound") }} • on
+            p(@click="toggleSound" v-if="audio") {{ $t("lang.navigation.sound") }} • {{audio}}
+            p(@click="toggleSound" v-else) {{ $t("lang.navigation.sound") }} • on
           .nav__options_language
             p(@click="change_lang('es')" v-bind:class="[$i18n.locale=='es' ? 'active' : '']") ES
             p(@click="change_lang('en')" v-bind:class="[$i18n.locale=='en' ? 'active' : '']") EN
@@ -19,12 +19,19 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import { Howl } from 'howler'
 
 export default {
   name: 'Navigation',
+  data () {
+    return {
+      sound: null
+    }
+  },
   methods: {
     ...mapActions({
       toggleMenu: 'TOGGLE_MENU',
+      toggleSound: 'TOGGLE_SOUND',
       toggleLanguage: 'TOGGLE_LANGUAGE'
     }),
     change_lang (lang) {
@@ -33,12 +40,41 @@ export default {
       this.$el.parentElement.querySelector('footer').removeAttribute('style')
       this.$i18n.locale = lang
       this.toggleLanguage()
+    },
+    loadAudio () {
+      if (this.isMobile) return false
+      if (this.audio) {
+        this.audio === 'on' && this.playAudio()
+      } else {
+        this.playAudio()
+      }
+    },
+    playAudio () {
+      this.sound = new Howl({
+        src: ['http://d1rnu9exaqm00k.cloudfront.net/audio/johann-johannsson-mccanick-2.mp3'],
+        autoplay: false,
+        loop: true,
+        volume: 0.5
+      })
+      this.sound.play()
+    },
+    stopAudio () {
+      this.sound.pause()
     }
+  },
+  mounted () {
+    this.loadAudio()
   },
   computed: {
     ...mapGetters([
-      'audio'
+      'audio',
+      'isMobile'
     ])
+  },
+  watch: {
+    audio: function (audio) {
+      audio === 'on' ? this.playAudio() : this.stopAudio()
+    }
   }
 }
 </script>
@@ -56,7 +92,6 @@ export default {
   .nav__pagination {
     opacity: 0;
     a{
-      pointer-events: none;
     }
   }
 }
@@ -132,9 +167,9 @@ export default {
           }
 
           .nav__options_sound {
-              cursor: pointer;
               padding-left: 2vw;
               p {
+                cursor: pointer;
                 font-style: italic
               }
               @media only screen and (max-width:768px) {
