@@ -50,6 +50,10 @@ export default {
       }
     },
     playAudio () {
+      if (this.sound) {
+        this.sound.play()
+        return true
+      }
       this.sound = new Howl({
         src: ['http://d1rnu9exaqm00k.cloudfront.net/audio/johann-johannsson-mccanick-2.mp3'],
         autoplay: false,
@@ -59,7 +63,7 @@ export default {
       this.sound.play()
     },
     stopAudio () {
-      this.sound.pause()
+      this.sound && this.sound.stop()
     }
   },
   computed: {
@@ -75,6 +79,7 @@ export default {
     },
     isLoading: function (isLoading) {
       isLoading || this.loadAudio()
+      isLoading && this.stopAudio()
     }
   }
 }

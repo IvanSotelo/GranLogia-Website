@@ -11,7 +11,7 @@
       p.loader-message.audio
         template(v-if="audio==='on'") {{ $t("lang.loader.loader-message.loader-music-text") }}
           span.loader-line
-          span.loader-music-switch(@click="toggleSound") {{ $t("lang.loader.loader-message.loader-music-switch") }}
+          span.loader-music-switch(@click="offMusic") {{ $t("lang.loader.loader-message.loader-music-switch") }}
 </template>
 
 <script>
@@ -67,6 +67,14 @@ export default {
             })
           })
         })
+    },
+    offMusic: function () {
+      let i = this
+      TweenLite.to(this.$el.querySelector('.audio'), 1, {
+        autoAlpha: 0,
+        ease: Expo.easeOut,
+        onComplete: i.toggleSound
+      })
     }
   },
   mounted () {
