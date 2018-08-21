@@ -4,7 +4,7 @@ main(role="main")
     section#page-moral-code.page.page-moral-code
       .moral-code
         ul.js-moral-code
-          li.js-moral-code-list(v-for="(n, i) in 20" :key="i")
+          li.js-moral-code-list(v-for="(n, i) in 18" :key="i")
             p {{n}}
             p {{ $t("lang.moral-code["+i+"]") }}
 </template>
