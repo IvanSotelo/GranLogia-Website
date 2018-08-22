@@ -42,19 +42,10 @@ export default {
       this.toggleLanguage()
     },
     loadAudio () {
-      if (this.isMobile) return false
-      if (this.audio) {
-        this.audio === 'on' && this.playAudio()
-      } else {
-        this.playAudio()
-      }
+      !this.isMobile && this.audio ? this.audio === 'on' && this.playAudio() : this.playAudio()
     },
     playAudio () {
-      if (this.sound) {
-        this.sound.play()
-        return true
-      }
-      this.sound = new Howl({
+      this.sound ? this.sound.play() : this.sound = new Howl({
         src: ['http://d1rnu9exaqm00k.cloudfront.net/audio/johann-johannsson-mccanick-2.mp3'],
         autoplay: false,
         loop: true,

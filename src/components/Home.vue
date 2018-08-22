@@ -1,27 +1,27 @@
 <template lang="pug">
 main(role="main")
-  section#page-home.page.page-home
-    .page-home__overlay
-      .js-first.page-home__overlay--first
-      .js-second.page-home__overlay--second
-    .page-home__chapter.is-active
-      .page-home__chapter-background
-        img(src="https://d1rnu9exaqm00k.cloudfront.net/blue.jpg" data-src="https://d1rnu9exaqm00k.cloudfront.net/blue.jpg" alt="" data-background="#9684c2")
-    .page-home__chapter
-      .page-home__chapter-background
-        img.page-home__chapter-background--image(src="https://d1rnu9exaqm00k.cloudfront.net/bg10.jpg" data-ratio="1.7777" data-src="https://d1rnu9exaqm00k.cloudfront.net/bg10.jpg" alt="" data-background="#9684c2")
-    .page-home__transition
-      canvas.page-home__transition-main
-      img.page-home__transition-sprite(src="https://d1rnu9exaqm00k.cloudfront.net/sprite.png" data-src="https://d1rnu9exaqm00k.cloudfront.net/sprite.png" alt="")
-      canvas.page-home__transition-temp
-    .vertical-align
-      .vertical-align__item
-        span
-          p.page-home__slogan For the 200ᵀᴴ Anniversary
-        span
-          h1.page-home__title Ivan Aivazovsky
-        .page-home__cta
-          p Scroll to explore life
+  transition(v-on:enter="animateIn" v-bind:css="false" appear)
+    section#page-home.page.page-home
+      .page-home__overlay
+        .js-first.page-home__overlay--first
+        .js-second.page-home__overlay--second
+      .page-home__chapter.is-active
+        .page-home__chapter-background
+          img(src="https://d1rnu9exaqm00k.cloudfront.net/blue.jpg" data-src="https://d1rnu9exaqm00k.cloudfront.net/blue.jpg" alt="" data-background="#9684c2")
+      .page-home__chapter
+        .page-home__chapter-background
+          img.page-home__chapter-background--image(src="https://d1rnu9exaqm00k.cloudfront.net/bg10.jpg" data-ratio="1.7777" data-src="https://d1rnu9exaqm00k.cloudfront.net/bg10.jpg" alt="" data-background="#9684c2")
+      .page-home__transition
+        canvas.page-home__transition-main
+        img.page-home__transition-sprite(src="https://d1rnu9exaqm00k.cloudfront.net/sprite.png" data-src="https://d1rnu9exaqm00k.cloudfront.net/sprite.png" alt="")
+        canvas.page-home__transition-temp
+      .vertical-align
+        .vertical-align__item
+          span
+            p.page-home__slogan For the 200ᵀᴴ Anniversary
+          span
+            h1.page-home__title Ivan Aivazovsky
+          .page-home__cta
 </template>
 
 <script>
@@ -59,8 +59,8 @@ export default {
   },
   mounted: function () {
     this.canvasInit()
+    this.canvasTransition()
     this.globalResize()
-    this.animateIn()
     this.$nextTick(() => {
       window.addEventListener('resize', this.imageRetina)
       this.imageRetina()
@@ -108,16 +108,13 @@ export default {
       this.$el.querySelector('.page-home__transition-temp').width = window.innerWidth
       this.$el.querySelector('.page-home__transition-temp').height = window.innerHeight
     },
-    animateIn () {
-      let t = this
-      TweenLite.to(this.$el.querySelector('.page'), 1.3, {
+    animateIn (el, done) {
+      TweenLite.to(el, 1.3, {
         autoAlpha: 1,
         delay: 0.2,
         ease: Expo.easeInOut,
-        onComplete: function () {
-        }
+        onComplete: done
       })
-      t.canvasTransition()
       TweenLite.from(this.$el.querySelector('.page-home__title'), 2, {
         autoAlpha: 0,
         y: '-100%',
@@ -159,7 +156,7 @@ export default {
       this.bgTempContext.rect(0, 0, this.bgTempCanvas.width, this.bgTempCanvas.height)
       this.bgTempContext.fillStyle = this.bgNextImage.dataset.background
       this.bgTempContext.fill()
-      setTimeout(function () {
+      setTimeout(() => {
         i.style.zIndex = 4
         o.style.opacity = 1
         o.style.zIndex = 4
@@ -184,7 +181,7 @@ export default {
           this.bgCanvasSpriteNextFrame(t)
           this.bgSpriteThen = i - n % this.bgSpriteRate
         }
-        requestAnimationFrame(function () {
+        requestAnimationFrame(() => {
           e.bgCanvasRender(t)
         })
       }

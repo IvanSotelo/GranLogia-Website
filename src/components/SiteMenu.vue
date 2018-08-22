@@ -54,7 +54,7 @@ export default {
       toggleMenu: 'TOGGLE_MENU'
     }),
     animateMenuIn: function () {
-      this.menu_items.forEach(function (t) {
+      this.menu_items.forEach((t) => {
         return (t.style.pointerEvents = 'auto')
       })
       let t = new TimelineMax()
@@ -70,7 +70,7 @@ export default {
       }, this.isMobile ? '-=0.7' : '-=0.8')
     },
     animateMenuOut: function () {
-      this.menu_items.forEach(function (t) {
+      this.menu_items.forEach((t) => {
         return (t.style.pointerEvents = 'none')
       })
       let t = new TimelineMax()

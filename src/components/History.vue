@@ -1,98 +1,99 @@
 <template lang="pug">
 main(role="main")
-  section#page-history.page.page-history
-    .history
-      aside.history__aside(v-on:mouseenter="isOpen = true" v-on:mouseleave="isOpen = false" v-bind:class="[isOpen ? 'active' : '']")
-        .history__aside-container
-          .history__aside-filter
-            p.history__aside-filter--title Capitulos
-            ul
-              li(v-for="(chap, i) in chapters" :key="i" :class="'main-' + chap.title" @click="slideToChapter(i)")
-                p {{ chap.text }}
-        .history__aside__trigger-wrapper
-          div
-            p.side-childhood I
-            p.side-imperial-academy-of-arts II
-      .device-content
-        .history__timeline
-          .history__timeline-wrapper
-            .history__item.childhood
-              router-link(to="/history/1817")
-                .space
-                  .history__item-text
-                    p.history__item-text--date 1817
-                    p.history__item-text--title Born
-                    p.history__item-text--text Born on July 29th in Feodosia, from parents Constantine and Ripsime Aivazovsky
-                  .history__item-group
-                    .history__item-image--small
-                      img(alt="Konstantin G. Aivazovsky" src="https://d1rnu9exaqm00k.cloudfront.net/life/timeline/1817-1.jpg")
-                      p Konstantin G. Aivazovsky
-                      p 1771- 1841
-                    .history__item-image--small.left
-                      img(alt="Ripsime Aivazovsky" src="https://d1rnu9exaqm00k.cloudfront.net/life/timeline/1817-2.jpg")
-                      p Ripsime Aivazovsky
-                      p 1771- 1860
-            .history__item
-              router-link(to="/history/1831")
+  transition(v-on:enter="animateIn" v-bind:css="false" appear)
+    section#page-history.page.page-history
+      .history
+        aside.history__aside(v-on:mouseenter="isOpen = true" v-on:mouseleave="isOpen = false" v-bind:class="[isOpen ? 'active' : '']")
+          .history__aside-container
+            .history__aside-filter
+              p.history__aside-filter--title Capitulos
+              ul
+                li(v-for="(chap, i) in chapters" :key="i" :class="'main-' + chap.title" @click="slideToChapter(i)")
+                  p {{ chap.text }}
+          .history__aside__trigger-wrapper
+            div
+              p.side-childhood I
+              p.side-imperial-academy-of-arts II
+        .device-content
+          .history__timeline
+            .history__timeline-wrapper
+              .history__item.childhood
+                router-link(to="/history/1817")
+                  .space
+                    .history__item-text
+                      p.history__item-text--date 1817
+                      p.history__item-text--title Born
+                      p.history__item-text--text Born on July 29th in Feodosia, from parents Constantine and Ripsime Aivazovsky
+                    .history__item-group
+                      .history__item-image--small
+                        img(alt="Konstantin G. Aivazovsky" src="https://d1rnu9exaqm00k.cloudfront.net/life/timeline/1817-1.jpg")
+                        p Konstantin G. Aivazovsky
+                        p 1771- 1841
+                      .history__item-image--small.left
+                        img(alt="Ripsime Aivazovsky" src="https://d1rnu9exaqm00k.cloudfront.net/life/timeline/1817-2.jpg")
+                        p Ripsime Aivazovsky
+                        p 1771- 1860
+              .history__item
+                router-link(to="/history/1831")
+                  .history__item-wrapper.space
+                    .history__item-text
+                      p.history__item-text--date 1817
+                      p.history__item-text--title Born
+                      p.history__item-text--text Born on July 29th in Feodosia, from parents Constantine and Ripsime Aivazovsky
+                    img.history__item-image(alt="Konstantin G. Aivazovsky" src="https://d1rnu9exaqm00k.cloudfront.net/life/timeline/1830-1.jpg")
+              .history__item
                 .history__item-wrapper.space
-                  .history__item-text
-                    p.history__item-text--date 1817
-                    p.history__item-text--title Born
-                    p.history__item-text--text Born on July 29th in Feodosia, from parents Constantine and Ripsime Aivazovsky
-                  img.history__item-image(alt="Konstantin G. Aivazovsky" src="https://d1rnu9exaqm00k.cloudfront.net/life/timeline/1830-1.jpg")
-            .history__item
-              .history__item-wrapper.space
-                .history__item-aside--left
-                  span
-                    p M.N. Vorobiev
-                    p 1787 - 1855
-                  img(src="https://d1rnu9exaqm00k.cloudfront.net/life/timeline/1833-2.jpg" alt="M.N. Vorobiev")
-            .history__item
-              router-link(to="/history/1831")
-                .history__item-wrapper.space
-                  .history__item-text
-                    p.history__item-text--date 1817
-                    p.history__item-text--title Born
-                    p.history__item-text--text Born on July 29th in Feodosia, from parents Constantine and Ripsime Aivazovsky
-                  img.history__item-image(alt="Konstantin G. Aivazovsky" src="https://d1rnu9exaqm00k.cloudfront.net/life/timeline/1830-1.jpg")
-            .history__item
-              .history__item-wrapper.space
-                .history__item-aside--left
-                  span
-                    p M.N. Vorobiev
-                    p 1787 - 1855
-                  img(src="https://d1rnu9exaqm00k.cloudfront.net/life/timeline/1833-2.jpg" alt="M.N. Vorobiev")
-            .history__item.imperial-academy-of-arts.margin-0
-              router-link(to="/history/1831")
-                .history__item-wrapper.space
-                  .history__item-text
-                    p.history__item-text--date 1817
-                    p.history__item-text--title Born
-                    p.history__item-text--text Born on July 29th in Feodosia, from parents Constantine and Ripsime Aivazovsky
-                  .history__item-aside--right.bottom-10
-                    img(src="https://d1rnu9exaqm00k.cloudfront.net/life/timeline/1834-1.jpg" alt="Nicholas I")
+                  .history__item-aside--left
                     span
                       p M.N. Vorobiev
                       p 1787 - 1855
-            .history__item
-              router-link(to="/history/1831")
+                    img(src="https://d1rnu9exaqm00k.cloudfront.net/life/timeline/1833-2.jpg" alt="M.N. Vorobiev")
+              .history__item
+                router-link(to="/history/1831")
+                  .history__item-wrapper.space
+                    .history__item-text
+                      p.history__item-text--date 1817
+                      p.history__item-text--title Born
+                      p.history__item-text--text Born on July 29th in Feodosia, from parents Constantine and Ripsime Aivazovsky
+                    img.history__item-image(alt="Konstantin G. Aivazovsky" src="https://d1rnu9exaqm00k.cloudfront.net/life/timeline/1830-1.jpg")
+              .history__item
                 .history__item-wrapper.space
-                  .history__item-text
-                    p.history__item-text--date 1817
-                    p.history__item-text--title Born
-                    p.history__item-text--text Born on July 29th in Feodosia, from parents Constantine and Ripsime Aivazovsky
-                  img.history__item-image(alt="Konstantin G. Aivazovsky" src="https://d1rnu9exaqm00k.cloudfront.net/life/timeline/1830-1.jpg")
-            .history__item.margin-0
-              .history__item-wrapper.space
-                .history__item-aside--left
-                  span
-                    p M.N. Vorobiev
-                    p 1787 - 1855
-                  img(src="https://d1rnu9exaqm00k.cloudfront.net/life/timeline/1833-2.jpg" alt="M.N. Vorobiev")
-      .history__mobile
-        ul
-          li.history__mobile-chapter(v-for="(chap, i) in chapters" :key="i" :class="'mobile-' + chap.title" @click="slideToChapter(i)")
-            p {{ chap.mobile }}
+                  .history__item-aside--left
+                    span
+                      p M.N. Vorobiev
+                      p 1787 - 1855
+                    img(src="https://d1rnu9exaqm00k.cloudfront.net/life/timeline/1833-2.jpg" alt="M.N. Vorobiev")
+              .history__item.imperial-academy-of-arts.margin-0
+                router-link(to="/history/1831")
+                  .history__item-wrapper.space
+                    .history__item-text
+                      p.history__item-text--date 1817
+                      p.history__item-text--title Born
+                      p.history__item-text--text Born on July 29th in Feodosia, from parents Constantine and Ripsime Aivazovsky
+                    .history__item-aside--right.bottom-10
+                      img(src="https://d1rnu9exaqm00k.cloudfront.net/life/timeline/1834-1.jpg" alt="Nicholas I")
+                      span
+                        p M.N. Vorobiev
+                        p 1787 - 1855
+              .history__item
+                router-link(to="/history/1831")
+                  .history__item-wrapper.space
+                    .history__item-text
+                      p.history__item-text--date 1817
+                      p.history__item-text--title Born
+                      p.history__item-text--text Born on July 29th in Feodosia, from parents Constantine and Ripsime Aivazovsky
+                    img.history__item-image(alt="Konstantin G. Aivazovsky" src="https://d1rnu9exaqm00k.cloudfront.net/life/timeline/1830-1.jpg")
+              .history__item.margin-0
+                .history__item-wrapper.space
+                  .history__item-aside--left
+                    span
+                      p M.N. Vorobiev
+                      p 1787 - 1855
+                    img(src="https://d1rnu9exaqm00k.cloudfront.net/life/timeline/1833-2.jpg" alt="M.N. Vorobiev")
+        .history__mobile
+          ul
+            li.history__mobile-chapter(v-for="(chap, i) in chapters" :key="i" :class="'mobile-' + chap.title" @click="slideToChapter(i)")
+              p {{ chap.mobile }}
 </template>
 
 <script>
@@ -120,8 +121,14 @@ export default {
       }]
     }
   },
+  beforeRouteLeave (to, from, next) {
+    TweenLite.to(this.$el.querySelector('.page'), 1, {
+      autoAlpha: 0,
+      ease: Expo.easeInOut,
+      onComplete: next
+    })
+  },
   mounted () {
-    this.animateIn()
     this.changeRoute(this.$route.name)
     this.addSmooth()
     this.setChapterPositions()
@@ -130,7 +137,7 @@ export default {
     ...mapActions({
       changeRoute: 'ROUTE_NAME'
     }),
-    animateIn () {
+    animateIn (el, done) {
       var i = this
       const a = new TimelineMax({
         onComplete: function () {
@@ -142,9 +149,10 @@ export default {
             })
           }
           i.slideToChapter(0)
+          done()
         }
       })
-      a.to(this.$el.querySelector('.page'), 1, {
+      a.to(el, 1, {
         autoAlpha: 1,
         ease: Expo.easeInOut
       })

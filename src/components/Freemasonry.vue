@@ -70,7 +70,7 @@ export default {
         autoAlpha: 1,
         ease: Expo.easeInOut,
         delay: 1,
-        onComplete: function () {
+        onComplete: () => {
           t.introAnimation()
           done()
         }
