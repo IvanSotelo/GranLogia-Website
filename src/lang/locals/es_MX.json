@@ -1,4 +1,14 @@
 {
+    "route": [
+        "Inicio",
+        "Historia",
+        "Masoneria",
+        "Código moral masónico",
+        "Ser Masón",
+        "Logias",
+        "Gran Logia",
+        "Contacto"
+    ],
     "loader": {
         "loader-message": {
             "isMobile": "Ver en Escritorio",
