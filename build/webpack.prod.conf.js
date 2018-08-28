@@ -12,6 +12,15 @@ const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const PrerenderSPAPlugin = require('prerender-spa-plugin')
 const Renderer = PrerenderSPAPlugin.PuppeteerRenderer
+const PACKAGE = require('../package.json')
+const banner = `${PACKAGE.description}
+ ${PACKAGE.version}
+
+ Licensed under the MIT license.
+ http://www.opensource.org/licenses/mit-license.php
+
+ Copyright ${ new Date().getFullYear() }, ${PACKAGE.author}
+ ${PACKAGE.homepage}`
 
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -40,6 +49,9 @@ const webpackConfig = merge(baseWebpackConfig, {
       uglifyOptions: {
         compress: {
           warnings: false
+        },
+        output: {
+          comments: false
         }
       },
       sourceMap: config.build.productionSourceMap,
@@ -125,7 +137,8 @@ const webpackConfig = merge(baseWebpackConfig, {
     new PrerenderSPAPlugin({
       staticDir: path.join(__dirname, '../dist'),
       routes: [ '/', '/history', '/freemasonry', '/moral-code']
-    })
+    }),
+    new webpack.BannerPlugin(banner)
   ]
 })
 

@@ -1,8 +1,9 @@
 {
   "name": "granlogia-website",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "author": "Ivan Sotelo <isotelo@isnstudio.com>",
   "description": "Gran Logia website",
+  "homepage": "http://www.deskode.com",
   "license": null,
   "private": true,
   "scripts": {
