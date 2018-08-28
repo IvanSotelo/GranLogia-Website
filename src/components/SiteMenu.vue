@@ -30,7 +30,7 @@
         p.site-menu__item--title(@click="toggleMenu()") {{ $t("lang.site-menu.item-about") }}
         .site-menu__item--bg
     ._col.site-menu__item(role="listitem", v-if="isMobile")
-      router-link(to="/credits")
+      router-link(to="/contact")
         p.site-menu__item--title(@click="toggleMenu()") {{ $t("lang.site-menu.item-contact") }}
         .site-menu__item--bg
 </template>

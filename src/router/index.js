@@ -5,6 +5,7 @@ import Home from '@/components/Home'
 import History from '@/components/History'
 import Freemasonry from '@/components/Freemasonry'
 import MoralCode from '@/components/MoralCode'
+import Contact from '@/components/Contact'
 
 Vue.use(Router)
 Vue.use(Meta)
@@ -36,6 +37,12 @@ export default new Router({
       name: 'moral-code',
       component: MoralCode,
       meta: { index: 3 }
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: Contact,
+      meta: { index: 7 }
     }
   ]
 })

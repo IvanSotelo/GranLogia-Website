@@ -42,6 +42,14 @@ export default {
     }
   }
 }
+.is-contact{
+  footer {
+    a[href="/credits"]{
+      color: #a1907f
+    }
+  }
+}
+
 .footer {
     width: 100%;
     height: 50px;
