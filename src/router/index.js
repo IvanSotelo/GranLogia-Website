@@ -16,22 +16,26 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      meta: { index: 0 }
     },
     {
       path: '/history',
       name: 'history',
-      component: History
+      component: History,
+      meta: { index: 1 }
     },
     {
       path: '/freemasonry',
       name: 'freemasonry',
-      component: Freemasonry
+      component: Freemasonry,
+      meta: { index: 2 }
     },
     {
       path: '/moral-code',
-      name: 'MoralCode',
-      component: MoralCode
+      name: 'moral-code',
+      component: MoralCode,
+      meta: { index: 3 }
     }
   ]
 })

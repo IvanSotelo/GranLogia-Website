@@ -7,7 +7,7 @@
         .nav__pagination(itemprop="breadcrumb")
           p
             router-link(to="/") {{ $t("lang.navigation.home") }}
-            a.nav__pagination--crumb(href="") &nbsp;•&nbsp;
+            a.nav__pagination--crumb(href="") &nbsp;•&nbsp;{{ $t("lang.route[" + $route.meta.index + "]") }}
         .nav__options
           .nav__options_sound
             p(@click="toggleSound" v-if="audio") {{ $t("lang.navigation.sound") }} • {{audio}}

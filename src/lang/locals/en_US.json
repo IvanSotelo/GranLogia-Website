@@ -1,4 +1,14 @@
 {
+    "route": [
+        "Home",
+        "History",
+        "Freemasonry",
+        "Masonic Moral Code",
+        "Becoming a freemason",
+        "Lodges",
+        "Grand Lodge",
+        "Contact us"
+    ],
     "loader": {
         "loader-message": {
             "isMobile": "Best viewed on Desktop",
