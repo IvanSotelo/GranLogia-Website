@@ -55,5 +55,11 @@
         "Lee y aprovecha; ve e imita; reflexiona y trabaja. Y que todo redunde en beneficio de tus hermanos, para tu propia utilidad.",
         "Sé siempre contento para todo, con todo y de todo.",
         "Jamás juzgues ligeramente las acciones de los hombres. Perdónalas y no las condenes. El Gran Arquitecto del Universo es el que sondea nuestros corazones. Es él, sólo, quien puede apreciar su obra."
-    ]
+    ],
+    "contact": {
+      "archive-materials": "Materiales de archivo",
+      "music": "Música",
+      "development": "Desarrollo",
+      "design": "Diseño"
+    }
 }
