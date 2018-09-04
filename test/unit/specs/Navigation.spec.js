@@ -4,11 +4,19 @@ import i18n from '../../../src/lang'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import Config from '../../../src/store/modules/Config'
+import Preload from '../../../src/store/modules/Preload'
 
 const localVue = createLocalVue()
 localVue.use(VueRouter)
 localVue.use(Vuex)
-const router = new VueRouter()
+const router = new VueRouter(
+  {routes: [
+    {
+      path: '/',
+      meta: { index: 0 }
+    }
+  ]}
+)
 
 describe('Navigation.vue', () => {
   let actions
@@ -30,7 +38,7 @@ describe('Navigation.vue', () => {
     store = new Vuex.Store({
       state,
       actions,
-      getters: Config.getters
+      getters: {...Config.getters, ...Preload.getters}
     })
   })
 
