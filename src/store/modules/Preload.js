@@ -3,9 +3,7 @@ const state = {
 }
 
 const mutations = {
-  PRELOADED (state) {
-    state.isLoading = !state.isLoading
-  }
+  PRELOADED: state => (state.isLoading = !state.isLoading)
 }
 
 const actions = {
@@ -15,9 +13,7 @@ const actions = {
 }
 
 const getters = {
-  isLoading (state) {
-    return state.isLoading
-  }
+  isLoading: (state) => state.isLoading
 }
 
 export default {
