@@ -44,6 +44,15 @@ describe('Contact.vue', () => {
       router,
       stubs: ['router-link']
     })
-    expect(wrapper.contains('p')).toBe(true)
+    const columns = wrapper.findAll('.col-6')
+    expect(wrapper.findAll('.col-6').length).toBe(10)
+    const firstColumn = columns.at(0)
+    expect(firstColumn.find('p').text()).toBe('Archive materials')
+    const secondColumn = columns.at(2)
+    expect(secondColumn.find('p').text()).toBe('Music')
+    const thirdColumn = columns.at(4)
+    expect(thirdColumn.find('p').text()).toBe('Development')
+    const fourColumn = columns.at(6)
+    expect(fourColumn.find('p').text()).toBe('Design')
   })
 })
