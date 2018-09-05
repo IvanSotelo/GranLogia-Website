@@ -45,7 +45,7 @@ describe('Contact.vue', () => {
       stubs: ['router-link']
     })
     const columns = wrapper.findAll('.col-6')
-    expect(wrapper.findAll('.col-6').length).toBe(10)
+    expect(wrapper.findAll('.col-6').length).toBe(12)
     const firstColumn = columns.at(0)
     expect(firstColumn.find('p').text()).toBe('Archive materials')
     const secondColumn = columns.at(2)
