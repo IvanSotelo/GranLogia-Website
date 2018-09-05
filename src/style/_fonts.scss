@@ -151,3 +151,14 @@
     font-style: normal;
     font-weight: 400;
 }
+
+@font-face {
+  font-family: 'Deskode';
+  src:  url('~@/assets/fonts/Deskode.eot?y0qguw');
+  src:  url('~@/assets/fonts/Deskode.eot?y0qguw#iefix') format('embedded-opentype'),
+    url('~@/assets/fonts/Deskode.ttf?y0qguw') format('truetype'),
+    url('~@/assets/fonts/Deskode.woff?y0qguw') format('woff'),
+    url('~@/assets/fonts/Deskode.svg?y0qguw#Deskode') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

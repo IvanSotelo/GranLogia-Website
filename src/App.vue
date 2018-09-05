@@ -1544,4 +1544,31 @@ export default {
           vertical-align: middle;
       }
   }
+  [class^="deskode-"], [class*=" deskode-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'Deskode' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .deskode-heart:before {
+    content: "\e900";
+    color: #ff0d1c;
+  }
+  .deskode-code:before {
+    content: "\ea7f";
+  }
+  .deskode-logo:before {
+    content: "\e901";
+    font-size: 17pt;
+    vertical-align: middle;
+  }
 </style>
