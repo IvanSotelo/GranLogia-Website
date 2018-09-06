@@ -6,6 +6,12 @@ main(role="main")
         .device-content
           .row
             .col-6
+              p {{ $t("lang.contact.contact") }}
+            .col-6
+              p
+                a(href="mailto:hi@kirillpritula.com") hi@kirillpritula.com
+          .row
+            .col-6
               p {{ $t("lang.contact.archive-materials") }}
             .col-6
               p
@@ -101,6 +107,9 @@ export default {
   -ms-flex-align: center;
   align-items: center;
   height: 100vh;
+  .made-with-heart{
+    color: #fff;
+  }
   .row {
     width: 80%;
     padding: .4vw 0;
@@ -154,6 +163,16 @@ export default {
         font: .6875rem/1.563rem NewBaskervilleExpOdC;
       }
     }
+    &:first-of-type {
+      a, p {
+        font-size: 1.2vw;
+        font-style: italic;
+        font-family: "Playfair Display";
+        @media only screen and (max-width: 768px) {
+          font-size: 5vw
+        }
+      }
+    }
     &:last-of-type {
       text-align: left;
       a, p {
@@ -165,9 +184,6 @@ export default {
             width: 100%
           }
         }
-      }
-      .made-with-heart{
-        color: #fff;
       }
     }
   }
