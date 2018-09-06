@@ -6,7 +6,7 @@ main(role="main")
         .device-content
           .row
             .col-6
-              p {{ $t("lang.contact.contact") }}
+              p {{ $t("lang.contact.contact-us") }}
             .col-6
               p
                 a(href="mailto:hi@kirillpritula.com") hi@kirillpritula.com

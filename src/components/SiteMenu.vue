@@ -26,7 +26,7 @@
         p.site-menu__item--title(@click="toggleMenu()") {{ $t("lang.site-menu.item-lodges") }}
         .site-menu__item--bg(@click="toggleMenu()" style="background-image: url(https://d1rnu9exaqm00k.cloudfront.net/site-menu-4.jpg);")
     ._col.site-menu__item(role="listitem", v-if="isMobile")
-      router-link(to="/about")
+      router-link(to="/about-us")
         p.site-menu__item--title(@click="toggleMenu()") {{ $t("lang.site-menu.item-about") }}
         .site-menu__item--bg
     ._col.site-menu__item(role="listitem", v-if="isMobile")

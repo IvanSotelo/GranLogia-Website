@@ -6,7 +6,7 @@
             img(src="https://d1rnu9exaqm00k.cloudfront.net/200thAnniv.svg")
             router-link.footer__archive(to="/archive") {{ $t("lang.footer.archive") }}
             .footer-nav
-              router-link(to="/about") {{ $t("lang.footer.about") }}
+              router-link(to="/about-us") {{ $t("lang.footer.about") }}
               router-link(to="/contact") {{ $t("lang.footer.contact") }}
 </template>
 

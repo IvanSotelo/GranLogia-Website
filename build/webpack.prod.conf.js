@@ -136,7 +136,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     ]),
     new PrerenderSPAPlugin({
       staticDir: path.join(__dirname, '../dist'),
-      routes: [ '/', '/history', '/freemasonry', '/moral-code', '/contact']
+      routes: [ '/', '/history', '/freemasonry', '/moral-code', '/contact',  '/about-us']
     }),
     new webpack.BannerPlugin(banner)
   ]
