@@ -28,13 +28,7 @@ main(role="main")
                 a(href="http://www.johannjohannsson.com" target="_blank") Jóhann Jóhannsson - McCanick
           .row
             .col-6
-              p {{ $t("lang.contact.development") }}
-            .col-6
-              p
-                a(href="http://ivansotelo.me" target="_blank") Ivan Sotelo
-          .row
-            .col-6
-              p {{ $t("lang.contact.design") }}
+              p {{ $t("lang.contact.development-design") }}
             .col-6
               p
                 a(href="https://www.behance.net/IvanSotelo" target="_blank") Ivan Sotelo
@@ -43,11 +37,11 @@ main(role="main")
             .col-6
               .made-with-heart
                 span.deskode-code
-                |  with 
+                |  with
                 span.deskode-heart
-                |  by 
+                |  by
                 a(href="https://www.deskode.com" target="_blank")
-                  span.deskode-logo        
+                  span.deskode-logo
           .row
             .col-6
             .col-6
