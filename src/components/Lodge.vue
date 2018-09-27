@@ -11,15 +11,15 @@ transition(v-on:enter="zoomIn" v-on:leave="zoomOut" v-bind:css="false" appear)
             p.lodge__overlay-counter--total {{ total }}
           p.lodge__overlay-counter--next(@click='updateNext') Next
         ul.lodge__overlay-images
-          li.image-list(v-for="(n, index) in 2" :key="index"  :class="['' + index]")
+          li.image-list(v-for="(n, index) in 3" :key="index"  :class="['' + index]")
             svg.svg(style='width: 100%; height: 100%; top: 0; position: fixed; bottom: 0; left: 0')
               defs
                 linearGradient(x2='0%' y2='1' :id="['gradient-' + index]")
                   stop(offset='0.8' stop-color='#fff')
                   stop(offset='1' stop-color='#000')
                 mask(maskUnits='objectBoundingBox' maskContentUnits='objectBoundingBox' :id="['gradient-mask-' + index]")
-                  rect.image-rect(x='0' :y="[index==0 ? '0' : '-1.3']" width='2' height='1.3' :fill="['url(#gradient-' + index + ')']")
-              image.js-images(x='0' y='0' width='100%' height='100%' :xlink:href="['https://d1rnu9exaqm00k.cloudfront.net/map/genova-' + n + '.jpg']" :mask="['url(#gradient-mask-' + index + ')']" preserveAspectRatio='xMidYMid slice')
+                  rect.image-rect(x='0' y='0' width='2' height='1.3' :fill="['url(#gradient-' + index + ')']")
+              image.js-images(x='0' y='0' width='100%' height='100%' :xlink:href="['https://d1rnu9exaqm00k.cloudfront.net/map/tiflis-' + n + '.jpg']" :mask="['url(#gradient-mask-' + index + ')']" preserveAspectRatio='xMidYMid slice')
       .col-5
         .lodge__overlay-close(@click="closeLodge")
         .lodge__overlay-content
@@ -134,6 +134,14 @@ export default {
       this.$el.querySelectorAll('.image-list').forEach((t) => {
         t.style.zIndex = 10
       })
+      this.siblings(this.$el.querySelectorAll('.image-list')[0]).forEach((t) => {
+        let e = t.children[0].children[0].children[1].children[0]
+        TweenLite.set(e, {
+          attr: {
+            y: '-1.5'
+          }
+        })
+      })
     },
     setupControls () {
       this.slides = this.$el.querySelectorAll('.image-list').length
@@ -150,8 +158,7 @@ export default {
       let t = this
       this.animating = !0
       this.$el.querySelectorAll('.image-list')[this.current].style.zIndex = 20
-      this.$el.querySelectorAll('.image-list')[this.current === this.length - 1 ? 0 : this.current + 1].style.zIndex = 30
-      console.log(this.$el.querySelectorAll('.image-rect')[this.next])
+      this.$el.querySelectorAll('.image-list')[this.current === this.slides - 1 ? 0 : this.current + 1].style.zIndex = 30
       TweenLite.to(this.$el.querySelectorAll('.image-rect')[this.next], 1, {
         attr: {
           y: 0
@@ -162,14 +169,13 @@ export default {
         t.animating = !1
         t.siblings(t.$el.querySelectorAll('.image-list')[t.next]).forEach((t) => {
           let e = t.children[0].children[0].children[1].children[0]
-          console.log(e)
           TweenLite.set(e, {
             attr: {
-              y: -1.5
+              y: '-1.5'
             }
           })
         })
-        t.current + 1 === t.length ? t.current = 0 : ++t.current
+        t.current + 1 === t.slides ? t.current = 0 : ++t.current
       })
     },
     siblings (n) {
