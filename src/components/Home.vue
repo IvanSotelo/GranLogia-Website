@@ -379,7 +379,6 @@ export default {
               top: 35vw
             }
             p {
-              cursor: pointer;
               color: rgba(255, 255, 255, .49);
               transition: color 1s cubic-bezier(.19, 1, .22, 1);
               &:hover {

@@ -155,10 +155,6 @@ export default {
     }
   }
 
-  .loader-music-switch {
-      cursor: pointer
-  }
-
   .loader-line {
       height: 1px;
       width: 5vw;

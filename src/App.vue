@@ -5,10 +5,12 @@
   FooterView
   router-view(v-cloak, v-if="!isLoading")
   loader(v-if="isLoading")
+  SCursor
 </template>
 
 <script>
 import Loader from '@/loader/Loader'
+import SCursor from '@/cursor/Cursor'
 import Navigation from '@/components/Navigation'
 import FooterView from '@/components/FooterView'
 import SiteMenu from '@/components/SiteMenu'
@@ -25,6 +27,7 @@ export default {
   },
   components: {
     Loader,
+    SCursor,
     Navigation,
     FooterView,
     SiteMenu
@@ -248,12 +251,6 @@ export default {
   input[type=reset],
   input[type=submit] {
       -webkit-appearance: button;
-      cursor: pointer
-  }
-
-  button[disabled],
-  html input[disabled] {
-      cursor: default
   }
 
   button::-moz-focus-inner,

@@ -127,7 +127,6 @@ export default {
         top: 3.6%;
         position: absolute;
         z-index: 3;
-        cursor: pointer;
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
         -ms-perspective: 1000;

@@ -264,7 +264,6 @@ export default {
                     padding: .3vw 2.5vw;
                     position: relative;
                     transition: background .7s cubic-bezier(.19, 1, .22, 1);
-                    cursor: pointer
                 }
                 ul li p {
                     display: inline-block;
@@ -288,7 +287,6 @@ export default {
             padding: 0 1vw;
             background: #f9f9f9;
             right: 0;
-            cursor: pointer;
             div {
                 position: relative;
                 top: 50%;
@@ -602,7 +600,6 @@ export default {
               padding: 6vw 0;
               width: 100%;
               position: relative;
-              cursor: pointer;
               transition: all 1s cubic-bezier(.19, 1, .22, 1);
               &:before {
                   content: "";

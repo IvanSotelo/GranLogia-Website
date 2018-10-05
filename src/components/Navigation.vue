@@ -134,7 +134,6 @@ export default {
       }
 
       .nav__menu--open {
-          cursor: pointer;
           @media only screen and (max-width:768px) {
             padding: 3vw;
             position: absolute;
@@ -151,7 +150,6 @@ export default {
           .nav__options_effect {
             transition: opacity 1s cubic-bezier(.19, 1, .22, 1);
             visibility: hidden;
-            cursor: pointer;
 
             &:not(.is-home){
               opacity: 0;
@@ -166,7 +164,6 @@ export default {
           .nav__options_sound {
               padding-left: 2vw;
               p {
-                cursor: pointer;
                 font-style: italic
               }
               @media only screen and (max-width:768px) {
@@ -177,7 +174,6 @@ export default {
           .nav__options_language {
               padding-left: 1vw;
               p {
-                cursor: pointer;
                 padding-left: 1vw;
                 @media only screen and (max-width:768px) {
                   padding-left: 7vw
