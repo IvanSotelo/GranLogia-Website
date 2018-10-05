@@ -6,7 +6,8 @@ const state = {
   routeName: '',
   menuOpen: false,
   language: Vue.localStorage.get('language', 'es'),
-  audio: Vue.localStorage.get('audio')
+  audio: Vue.localStorage.get('audio'),
+  showLodge: true
 }
 
 const mutations = {
@@ -18,6 +19,9 @@ const mutations = {
   },
   TOGGLE_MENU (state) {
     state.menuOpen = !state.menuOpen
+  },
+  TOGGLE_LODGE (state) {
+    state.showLodge = !state.showLodge
   },
   LANGUAGE (state) {
     if (state.language === 'es') {
@@ -59,6 +63,9 @@ const actions = {
   },
   TOGGLE_SOUND ({ commit, state }) {
     commit('SOUND')
+  },
+  TOGGLE_LODGE ({ commit, state }) {
+    commit('TOGGLE_LODGE')
   }
 }
 
@@ -67,7 +74,8 @@ const getters = {
   routeName: state => state.routeName,
   menuOpen: state => state.menuOpen,
   browserName: state => state.browserName,
-  audio: state => state.audio
+  audio: state => state.audio,
+  showLodge: state => state.showLodge
 }
 
 export default {

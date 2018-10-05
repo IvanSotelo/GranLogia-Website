@@ -51,11 +51,11 @@ class Single extends Smooth {
     }
     this.items && this.items.forEach((e) => {
       e.getBoundingClientRect().top < t.one_fourth ? !classes.has(e, 'visible') && classes.add(e, 'visible') : classes.has(e, 'visible') && classes.remove(e, 'visible')
-      var i = Number(this.dom.listener.querySelector('.map__overlay-counter--current').innerHTML)
+      var i = Number(this.dom.listener.querySelector('.lodge__overlay-counter--current').innerHTML)
       var n = this.dom.listener.getElementsByClassName('visible').length
       if (i !== n) {
-        this.dom.listener.querySelector('.map__overlay-counter--current').innerHTML = this.dom.listener.getElementsByClassName('visible').length
-        var r = this.dom.listener.querySelectorAll('.map__overlay-image')[n - 1 || 0]
+        this.dom.listener.querySelector('.lodge__overlay-counter--current').innerHTML = this.dom.listener.getElementsByClassName('visible').length
+        var r = this.dom.listener.querySelectorAll('.lodge__overlay-image')[n - 1 || 0]
         !classes.has(r, 'active') && classes.add(r, 'active')
         this.siblings(r).forEach((t) => {
           classes.has(t, 'active') && classes.remove(t, 'active')

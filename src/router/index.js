@@ -7,6 +7,7 @@ import Freemasonry from '@/components/Freemasonry'
 import MoralCode from '@/components/MoralCode'
 import Contact from '@/components/Contact'
 import About from '@/components/About'
+import Lodges from '@/components/Lodges'
 
 Vue.use(Router)
 Vue.use(Meta)
@@ -38,6 +39,12 @@ export default new Router({
       name: 'moral-code',
       component: MoralCode,
       meta: { index: 3 }
+    },
+    {
+      path: '/lodges',
+      name: 'lodges',
+      component: Lodges,
+      meta: { index: 5 }
     },
     {
       path: '/about-us',
