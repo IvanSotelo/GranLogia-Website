@@ -10,7 +10,7 @@ main(role="main")
           img(src="https://d1rnu9exaqm00k.cloudfront.net/blue.jpg" data-src="https://d1rnu9exaqm00k.cloudfront.net/blue.jpg" alt="" data-background="#9684c2")
       .page-home__chapter
         .page-home__chapter-background
-          img.page-home__chapter-background--image(src="https://d1rnu9exaqm00k.cloudfront.net/bg10.jpg" data-ratio="1.7777" data-src="https://d1rnu9exaqm00k.cloudfront.net/bg10.jpg" alt="" data-background="#9684c2")
+          img.page-home__chapter-background--image(src="http://ivanaivazovsky.life/assets/img/bg10.jpg" data-ratio="1.7777" data-src="https://d1rnu9exaqm00k.cloudfront.net/bg10.jpg" alt="" data-background="#9684c2")
       .page-home__transition
         canvas.page-home__transition-main
         img.page-home__transition-sprite(src="https://d1rnu9exaqm00k.cloudfront.net/sprite.png" data-src="https://d1rnu9exaqm00k.cloudfront.net/sprite.png" alt="")
